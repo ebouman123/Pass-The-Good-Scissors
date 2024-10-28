@@ -1,4 +1,5 @@
 import React from 'react';
+import CheckerboardQuiltPattern from '../CheckerboardQuiltPattern/CheckerboardQuiltPattern';
 
 // This is one of our simplest components
 // It doesn't have local state
@@ -8,7 +9,7 @@ import React from 'react';
 function InfoPage() {
   return (
     <div className="container">
-      <p>Info Page</p>
+      <CheckerboardQuiltPattern />
     </div>
   );
 }

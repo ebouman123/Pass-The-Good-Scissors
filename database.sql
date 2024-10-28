@@ -18,5 +18,5 @@ CREATE TABLE "fabric" (
     "fabricName" VARCHAR (80) UNIQUE NOT NULL,
     "fabricComment" VARCHAR (400),
     "fabricLink" VARCHAR (200),
-	"project_id" INTEGER REFERENCES "project"
+	"user_id" INTEGER REFERENCES "user"
 );
