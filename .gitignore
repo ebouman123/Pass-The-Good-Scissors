@@ -61,7 +61,7 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
+# no peeking
 .env
 
 # ignore package-lock as it complicates merging
