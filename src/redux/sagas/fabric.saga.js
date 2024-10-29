@@ -14,6 +14,18 @@ function* fetchFabrics() {
   }
 }
 
+function* fetchSpecificFabric(action) {
+    try {
+        const fabricResponse = yield axios.get(`/api/fabric/${action.payload}`);
+        yield put({
+          type: "SET_FABRICS",
+          payload: fabricResponse.data,
+        });
+      } catch (error) {
+        console.log("fetchFabrics error:", error);
+      }
+}
+
 // POST the fabricName to the fabric table, then calls GET
 function* addFabric(action) {
   try {
@@ -40,10 +52,22 @@ function* deleteFabric(action) {
   }
 }
 
+// PUT the fabricLink and fabricComment
+function* addFabricInfo(action) {
+    const data = action.payload
+    try {
+        yield axios.put('/api/fabric', data)
+    } catch (error) {
+        console.error('Problem with addFabricInfo', error)
+    }
+}
+
 function* fabricSaga() {
   yield takeEvery("FETCH_FABRICS", fetchFabrics);
   yield takeEvery("ADD_FABRIC", addFabric);
   yield takeEvery("DELETE_FABRIC", deleteFabric);
+  yield takeEvery("ADD_FABRIC_INFO", addFabricInfo);
+  yield takeEvery("FETCH_SPECIFIC_FABRIC", fetchSpecificFabric);
 }
 
 export default fabricSaga;

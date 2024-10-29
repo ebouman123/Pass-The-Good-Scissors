@@ -19,6 +19,9 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import DisplayFabrics from '../DisplayFabrics/DisplayFabrics';
+import PlanningTool from '../PlanningTool/PlanningTool';
+import EditFabric from '../EditFabric/EditFabric';
 
 import './App.css';
 
@@ -61,11 +64,22 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
             exact
-            path="/info"
+            path="/fabrics"
           >
-            <InfoPage />
+            <DisplayFabrics />
+          </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path="/planning"
+          >
+            <PlanningTool />
+          </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path="/edit"
+          >
+            <EditFabric />
           </ProtectedRoute>
 
           <Route

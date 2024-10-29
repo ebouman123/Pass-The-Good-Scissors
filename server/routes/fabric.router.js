@@ -78,4 +78,22 @@ router.delete("/:fabricName", (req, res) => {
     });
 });
 
+// Update the fabricLink & fabricComment
+router.put('/', (req, res) => {
+	const fabricName = req.params.fabricName
+	const queryText = `UPDATE "fabric" SET "rank" = "rank" + 1
+	WHERE "id" = $1`;
+	let params = [id]
+
+	pool.query(queryText, params)
+	.then(result => {
+		res.sendStatus(200)
+	})
+	.catch(error => {
+	console.log(error)
+	res.sendStatus(500)
+	})
+})
+
+
 module.exports = router;

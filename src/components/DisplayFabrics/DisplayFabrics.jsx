@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
 import "./DisplayFabrics.css";
+import UploadFabric from "../UploadFabric/UploadFabric";
 
 export default function DisplayFabrics() {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const fabrics = useSelector((store) => store.fabrics); // Get images from Redux store
   const [fabricUrls, setFabricUrls] = useState([]); // State to store presigned image URLs
 
@@ -53,8 +57,13 @@ export default function DisplayFabrics() {
     }
   };
 
+  const handleEdit = (fabricName) => {
+    history.push({ pathname: "/edit", state: fabricName });
+}
+
   return (
     <div>
+      <UploadFabric />
       <h1>Your Saved Fabrics</h1>
       {fabricUrls.length > 0 ? (
         <div className="gallery">
@@ -70,13 +79,14 @@ export default function DisplayFabrics() {
                   alt={fileName}
                   className="gallery-fabric"
                 />
+                <button onClick={() => handleEdit(fabric.fabricName)}>Edit</button>
                 <button onClick={() => deleteFabric(fabric)}>Delete</button>
               </div>
             );
           })}
         </div>
       ) : (
-        <p>No Fabrics Uploaded - Head to "Upload a Fabric"!</p>
+        <p>No Fabrics Uploaded - Try Uploading One!</p>
       )}
     </div>
   );
