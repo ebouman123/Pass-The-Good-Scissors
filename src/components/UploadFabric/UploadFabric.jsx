@@ -1,18 +1,18 @@
 import { useState } from "react";
 import axios from "axios";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-const UploadFabric = () => {
+export default function UploadFabric() {
   const dispatch = useDispatch();
 
-  const user = useSelector(store => store.user)
-  const username = user.username
+  const user = useSelector((store) => store.user);
+  const username = user.username;
 
   const [file, setFile] = useState(null); // State to hold the selected file
   const [nameInput, setNameInput] = useState(""); // State to hold the inputted file name
 
   // Define the folder where images will be uploaded
-  const folderPath = `${username}/fabrics`; 
+  const folderPath = `${username}/fabrics`;
 
   // Handle file selection
   const handleFileChange = (e) => {
@@ -34,10 +34,11 @@ const UploadFabric = () => {
   };
 
   // Check if an image with the same name already exists
-  const checkImageExists = async (fabricName) => {
+  const checkImageExists = async (fileName) => {
     try {
+      const formattedFabricString = fileName.replaceAll("/", "$");
       const response = await axios.get(
-        `http://localhost:5001/api/fabric/check-fabric-exists?fabricName=${fabricName}`
+        `http://localhost:5001/api/fabric/check-fabric-exists?fabricName=${formattedFabricString}`
       );
       return response.data.exists; // Return existence status
     } catch (error) {
@@ -54,7 +55,7 @@ const UploadFabric = () => {
     const fileType = file.type; // Get the file type
 
     // Check if an image with the same name already exists
-    const exists = await checkImageExists(nameInput);
+    const exists = await checkImageExists(fileName);
     if (exists) {
       alert(
         "A fabric with this name already exists. Please choose a different name."
@@ -84,7 +85,7 @@ const UploadFabric = () => {
       payload: fileName, // Store the full path including the folder
     });
 
-    setNameInput('');
+    setNameInput("");
   };
 
   return (
@@ -102,6 +103,4 @@ const UploadFabric = () => {
       <button onClick={handleUpload}>Upload</button>
     </div>
   );
-};
-
-export default UploadFabric;
+}

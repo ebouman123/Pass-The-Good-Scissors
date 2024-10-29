@@ -21,8 +21,9 @@ router.get("/check-fabric-exists", async (req, res) => {
   // Set the Access-Control-Allow-Origin header to allow requests from the specified origin
   res.set("Access-Control-Allow-Origin", "http://localhost:5173");
   const fabricName = req.query.fabricName;
+  const formattedFabricName = fabricName.replaceAll("$", "/");
   const queryText = `SELECT * FROM fabric WHERE "fabricName" = $1;`;
-  const params = [fabricName];
+  const params = [formattedFabricName];
 
   try {
     const results = await pool.query(queryText, params);
@@ -59,7 +60,7 @@ router.delete("/:fabricName", (req, res) => {
 
   const queryText = `DELETE FROM fabric WHERE "fabricName" = $1;`;
   const fabricName = req.params.fabricName;
-  const formattedFabricName = fabricName.replaceAll('$', '/')
+  const formattedFabricName = fabricName.replaceAll("$", "/");
   const params = [formattedFabricName];
 
   pool

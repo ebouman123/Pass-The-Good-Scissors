@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import './DisplayFabrics.css'
+import "./DisplayFabrics.css";
 
-const DisplayFabrics = () => {
+export default function DisplayFabrics() {
   const dispatch = useDispatch();
   const fabrics = useSelector((store) => store.fabrics); // Get images from Redux store
   const [fabricUrls, setFabricUrls] = useState([]); // State to store presigned image URLs
@@ -65,7 +65,11 @@ const DisplayFabrics = () => {
             return (
               <div className="gallery-item" key={fabric.fabricName}>
                 <h2>{fileName}</h2>
-                <img src={fabric.url} alt={fileName} className="gallery-fabric" />
+                <img
+                  src={fabric.url}
+                  alt={fileName}
+                  className="gallery-fabric"
+                />
                 <button onClick={() => deleteFabric(fabric)}>Delete</button>
               </div>
             );
@@ -76,6 +80,4 @@ const DisplayFabrics = () => {
       )}
     </div>
   );
-};
-
-export default DisplayFabrics;
+}

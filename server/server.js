@@ -20,6 +20,11 @@ app.use(express.static('build'));
 // Passport Session Configuration
 app.use(sessionMiddleware);
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*'); // Adjust as needed for security
+  next();
+});
+
 // Start Passport Sessions
 app.use(passport.initialize());
 app.use(passport.session());

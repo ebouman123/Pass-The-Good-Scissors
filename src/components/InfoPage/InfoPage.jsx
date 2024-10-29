@@ -1,6 +1,5 @@
 import React from 'react';
-import CheckerboardQuiltPattern from '../CheckerboardQuiltPattern/CheckerboardQuiltPattern';
-
+import PlanningTool from '../PlanningTool/PlanningTool';
 // This is one of our simplest components
 // It doesn't have local state
 // It doesn't dispatch any redux actions or display any part of redux state
@@ -9,7 +8,7 @@ import CheckerboardQuiltPattern from '../CheckerboardQuiltPattern/CheckerboardQu
 function InfoPage() {
   return (
     <div className="container">
-      <CheckerboardQuiltPattern />
+      <PlanningTool />
     </div>
   );
 }
