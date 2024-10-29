@@ -1,5 +1,5 @@
 const express = require("express");
-const pool = require('../modules/pool')
+const pool = require("../modules/pool");
 const router = express.Router();
 
 const AWS = require("aws-sdk");
@@ -63,7 +63,7 @@ router.get("/generate-multiple-presigned-urls", async (req, res) => {
           Expires: 600,
         };
 
-        // Using a promise-based approach for getSignedUrl
+        // Wait for URLs to be generated
         return new Promise((resolve, reject) => {
           // s3.getSignedUrl(operation, params, callback)
           s3.getSignedUrl("getObject", s3Params, (err, url) => {
@@ -101,6 +101,5 @@ router.delete("/delete-fabric", (req, res) => {
     res.json({ message: "Fabric deleted successfully", data });
   });
 });
-
 
 module.exports = router;

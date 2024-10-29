@@ -1,61 +1,108 @@
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function EditFabric() {
   const history = useHistory();
   const dispatch = useDispatch();
   const location = useLocation();
-  const fabricName = location.state
-  const formattedFabricName = fabricName.replaceAll("/", "$");
 
-  const [link, setLink] = useState('');
-  const [comment, setComment] = useState('');
+  const fabricName = location.state;
+  const formattedFabricName = fabricName.split("/").pop();
+
+  const chosenFabric = useSelector((store) => store.chosenFabric);
+  const currentFabric = chosenFabric[0];
+
+
+  const [link, setLink] = useState("");
+  const [comment, setComment] = useState("");
+
+  useEffect(() => {
+    if (fabricName) {
+      dispatch({
+        type: "FETCH_CHOSEN_FABRIC",
+        payload: fabricName,
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (chosenFabric.length > 0) {
+      setComment(currentFabric.fabricComment);
+      setLink(currentFabric.fabricLink);
+    }
+  }, [chosenFabric]);
+
+  const test = () => {
+    console.log("fabricName", fabricName);
+    console.log("chosenFabric", chosenFabric);
+    console.log("currentFabric", currentFabric);
+    console.log("currentFabricComment", currentFabric.fabricComment);
+  };
 
   const handleLink = (event) => {
-    setLink(event.target.value)
-  }
+    setLink(event.target.value);
+  };
 
   const handleComment = (event) => {
-    setComment(event.target.value)
-  }
+    setComment(event.target.value);
+  };
 
   const handleSave = (event) => {
     event.preventDefault();
     const data = {
-        fabricName: formattedFabricName,
-        fabricLink: link,
-        fabricComment: comment
-    }
+      fabricName: fabricName,
+      fabricLink: link,
+      fabricComment: comment,
+    };
     dispatch({
-        type: 'ADD_FABRIC_INFO',
-        payload: data
-    })
+      type: "ADD_FABRIC_INFO",
+      payload: data,
+    });
     //TODO: Add "Saved" Notification
-    history.push("/fabrics")
+    history.push("/fabrics");
   };
 
   return (
     <div>
+      <h1>Add a link or comment to your fabric!</h1>
+      <h2>{formattedFabricName}</h2>
+      <div>
+        <h3>Comment</h3>
+        {currentFabric.fabricComment ? (
+          <p>{currentFabric.fabricComment}</p>
+        ) : (
+          <p>You haven't added a comment yet.</p>
+        )}
+      </div>
+      <div>
+        <h3>Fabric Link</h3>
+        {currentFabric.fabricLink ? (
+          <p>{currentFabric.fabricLink}</p>
+        ) : (
+          <p>You haven't added a link yet.</p>
+        )}
+      </div>
       <form>
-        <input 
-        type="text"
-        placeholder="Add a Link"
-        value={link}
-        onChange={handleLink}
-         />
-        <input 
-        type="text"
-        placeholder="Add a Comment"
-        value={comment}
-        onChange={handleComment}
-         />
+        <input
+          type="text"
+          placeholder="Add a Link"
+          value={link}
+          onChange={handleLink}
+        />
+        <input
+          type="text"
+          placeholder="Add a Comment"
+          value={comment}
+          onChange={handleComment}
+        />
         <button type="submit" onClick={handleSave}>
           Save
         </button>
       </form>
       <button onClick={() => history.push("/fabrics")}>Back</button>
+      <button onClick={test}>Test</button>
     </div>
   );
 }

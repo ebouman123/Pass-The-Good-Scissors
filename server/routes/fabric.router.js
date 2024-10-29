@@ -16,6 +16,23 @@ router.get("/", (req, res) => {
     });
 });
 
+// Get the chosen fabric
+router.get("/chosen/:fabricName", (req, res) => {
+  const userId = req.user.id;
+  const fabricName = req.params.fabricName;
+  const formattedFabricName = fabricName.replaceAll("$", "/");
+
+  const queryText = 'SELECT * FROM fabric WHERE "user_id" = $1 AND "fabricName" = $2;';
+  const params = [userId, formattedFabricName];
+  pool
+    .query(queryText, params)
+    .then((results) => res.send(results.rows))
+    .catch((error) => {
+      console.log("Error making GET for chosen fabric:", error);
+      res.sendStatus(500);
+    });
+});
+
 // Check if a fabricName already exists
 router.get("/check-fabric-exists", async (req, res) => {
   // Set the Access-Control-Allow-Origin header to allow requests from the specified origin
@@ -79,21 +96,30 @@ router.delete("/:fabricName", (req, res) => {
 });
 
 // Update the fabricLink & fabricComment
-router.put('/', (req, res) => {
-	const fabricName = req.params.fabricName
-	const queryText = `UPDATE "fabric" SET "rank" = "rank" + 1
-	WHERE "id" = $1`;
-	let params = [id]
+router.put("/", (req, res) => {
+  const fabricName = req.body.fabricName;
+  const fabricLink = req.body.fabricLink;
+  const fabricComment = req.body.fabricComment;
+  const userId = req.user.id;
 
-	pool.query(queryText, params)
-	.then(result => {
-		res.sendStatus(200)
-	})
-	.catch(error => {
-	console.log(error)
-	res.sendStatus(500)
-	})
-})
+  const params = [fabricLink, fabricComment, userId, fabricName]
 
+  const queryText = `
+    UPDATE "fabric"
+    SET 
+    "fabricLink" = $1,
+    "fabricComment" = $2
+    WHERE "user_id" = $3 AND "fabricName" = $4;`;
+
+  pool
+    .query(queryText, params)
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = router;

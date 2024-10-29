@@ -14,15 +14,19 @@ function* fetchFabrics() {
   }
 }
 
-function* fetchSpecificFabric(action) {
+// Fetch the chosen fabric
+function* fetchChosenFabric(action) {
+  const fabricString = action.payload;
+  // Formatting so it will still go to the correct endpoint
+  const formattedFabricString = fabricString.replaceAll("/", "$");
     try {
-        const fabricResponse = yield axios.get(`/api/fabric/${action.payload}`);
+        const fabricResponse = yield axios.get(`/api/fabric/chosen/${formattedFabricString}`);
         yield put({
-          type: "SET_FABRICS",
+          type: "SET_CHOSEN_FABRIC",
           payload: fabricResponse.data,
         });
       } catch (error) {
-        console.log("fetchFabrics error:", error);
+        console.log("fetchChosenFabric error:", error);
       }
 }
 
@@ -67,7 +71,7 @@ function* fabricSaga() {
   yield takeEvery("ADD_FABRIC", addFabric);
   yield takeEvery("DELETE_FABRIC", deleteFabric);
   yield takeEvery("ADD_FABRIC_INFO", addFabricInfo);
-  yield takeEvery("FETCH_SPECIFIC_FABRIC", fetchSpecificFabric);
+  yield takeEvery("FETCH_CHOSEN_FABRIC", fetchChosenFabric);
 }
 
 export default fabricSaga;

@@ -15,6 +15,7 @@ export default function DisplayFabrics() {
   // Fetch images when the component mounts
   useEffect(() => {
     dispatch({ type: "FETCH_FABRICS" });
+    console.log(fabrics)
   }, [dispatch]);
 
   // Fetch presigned URLs whenever the image store changes
@@ -26,7 +27,7 @@ export default function DisplayFabrics() {
         try {
           // Request presigned URLs for the fabrics
           const response = await axios.get(
-            `http://localhost:5001/api/url/generate-multiple-presigned-urls?fabricNames=${fabricNames}`
+            `/api/url/generate-multiple-presigned-urls?fabricNames=${fabricNames}`
           );
           setFabricUrls(response.data); // Update state with fetched URLs
         } catch (error) {
