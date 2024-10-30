@@ -14,17 +14,17 @@ export default function EditFabric() {
   const chosenFabric = useSelector((store) => store.chosenFabric);
   const currentFabric = chosenFabric[0];
 
-
   const [link, setLink] = useState("");
   const [comment, setComment] = useState("");
 
+  const [linkInput, setLinkInput] = useState("");
+  const [commentInput, setCommentInput] = useState("");
+
   useEffect(() => {
-    if (fabricName) {
-      dispatch({
-        type: "FETCH_CHOSEN_FABRIC",
-        payload: fabricName,
-      });
-    }
+    dispatch({
+      type: "FETCH_CHOSEN_FABRIC",
+      payload: fabricName,
+    });
   }, []);
 
   useEffect(() => {
@@ -34,19 +34,25 @@ export default function EditFabric() {
     }
   }, [chosenFabric]);
 
-  const test = () => {
-    console.log("fabricName", fabricName);
-    console.log("chosenFabric", chosenFabric);
-    console.log("currentFabric", currentFabric);
-    console.log("currentFabricComment", currentFabric.fabricComment);
-  };
+  // const test = () => {
+  //   console.log("fabricName", fabricName);
+  //   console.log("chosenFabric", chosenFabric);
+  //   console.log("currentFabric", currentFabric);
+  //   console.log("currentFabricComment", currentFabric.fabricComment);
+  // };
 
   const handleLink = (event) => {
-    setLink(event.target.value);
+    if (event.target.value) {
+      setLink(event.target.value);
+      setLinkInput(event.target.value);
+    }
   };
 
   const handleComment = (event) => {
-    setComment(event.target.value);
+    if (event.target.value) {
+      setComment(event.target.value);
+      setCommentInput(event.target.value);
+    }
   };
 
   const handleSave = (event) => {
@@ -60,8 +66,11 @@ export default function EditFabric() {
       type: "ADD_FABRIC_INFO",
       payload: data,
     });
+    setLinkInput("");
+    setCommentInput("");
     //TODO: Add "Saved" Notification
-    history.push("/fabrics");
+    alert('Saved!')
+    // history.push("/fabrics");
   };
 
   return (
@@ -70,16 +79,16 @@ export default function EditFabric() {
       <h2>{formattedFabricName}</h2>
       <div>
         <h3>Comment</h3>
-        {currentFabric.fabricComment ? (
-          <p>{currentFabric.fabricComment}</p>
-        ) : (
-          <p>You haven't added a comment yet.</p>
-        )}
+        {comment ? <p>{comment}</p> : <p>You haven't added a comment yet.</p>}
       </div>
       <div>
         <h3>Fabric Link</h3>
-        {currentFabric.fabricLink ? (
-          <p>{currentFabric.fabricLink}</p>
+        {link ? (
+          <p>
+            <a href={link} target="_blank">
+              {link}
+            </a>
+          </p>
         ) : (
           <p>You haven't added a link yet.</p>
         )}
@@ -88,13 +97,13 @@ export default function EditFabric() {
         <input
           type="text"
           placeholder="Add a Link"
-          value={link}
+          value={linkInput}
           onChange={handleLink}
         />
         <input
           type="text"
           placeholder="Add a Comment"
-          value={comment}
+          value={commentInput}
           onChange={handleComment}
         />
         <button type="submit" onClick={handleSave}>
@@ -102,7 +111,7 @@ export default function EditFabric() {
         </button>
       </form>
       <button onClick={() => history.push("/fabrics")}>Back</button>
-      <button onClick={test}>Test</button>
+      {/* <button onClick={test}>Test</button> */}
     </div>
   );
 }
