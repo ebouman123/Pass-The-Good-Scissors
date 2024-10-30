@@ -15,7 +15,6 @@ export default function DisplayFabrics() {
   // Fetch images when the component mounts
   useEffect(() => {
     dispatch({ type: "FETCH_FABRICS" });
-    console.log(fabrics)
   }, [dispatch]);
 
   // Fetch presigned URLs whenever the image store changes

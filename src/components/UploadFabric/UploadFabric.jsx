@@ -89,18 +89,29 @@ export default function UploadFabric() {
   };
 
   return (
-    <div>
+    <form>
       {/* Input for selecting a file */}
-      <input type="file" accept="image/*" onChange={handleFileChange} />
+      <label htmlFor="fileInput">
+        Select a file to upload:
+        <input
+          type="file"
+          accept="image/*"
+          id="fileInput"
+          onChange={handleFileChange}
+        />
+      </label>
       {/* Input for entering the image name */}
-      <input
-        type="text"
-        value={nameInput}
-        onChange={handleFileName}
-        placeholder="Enter fabric name"
-      />
+      <label htmlFor="imageNameInput">Fabric Name:
+        <input
+          type="text"
+          value={nameInput}
+          onChange={handleFileName}
+          id="imageNameInput"
+          placeholder="Enter fabric name"
+        />
+      </label>
       {/* Button to trigger the upload process */}
       <button onClick={handleUpload}>Upload</button>
-    </div>
+    </form>
   );
 }
