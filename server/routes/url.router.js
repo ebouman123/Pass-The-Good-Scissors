@@ -143,6 +143,42 @@ router.get("/generate-multiple-presigned-urls-quilts", async (req, res) => {
   }
 });
 
+// Generate a presigned url for the chosen quilt
+router.get("/generate-presigned-url-quilt/:quiltName", async (req, res) => {
+  const quiltName = req.params.quiltName;
+  const formattedQuiltName = quiltName.replaceAll("$", "/");
+
+  if (!formattedQuiltName) {
+    return res.status(400).json({ error: "quiltName is required" });
+  }
+
+  try {
+    // Params needed for a presigned URL
+    const s3Params = {
+      Bucket: "fabricimagebucket",
+      Key: formattedQuiltName,
+      Expires: 600,
+    };
+
+    // Generate the presigned URL
+    const url = await new Promise((resolve, reject) => {
+      s3.getSignedUrl("getObject", s3Params, (err, url) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(url);
+        }
+      });
+    });
+
+    // Respond with the presigned URL
+    res.json({ formattedQuiltName, url });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
 // Delete the specified fabric image from S3
 router.delete("/delete-fabric", (req, res) => {
   const fabricName = req.query.fabricName;
