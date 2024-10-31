@@ -21,6 +21,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import DisplayFabrics from '../DisplayFabrics/DisplayFabrics';
 import PlanningTool from '../PlanningTool/PlanningTool';
 import EditFabric from '../EditFabric/EditFabric';
+import EditQuilt from '../EditQuilt/EditQuilt';
 
 import './App.css';
 
@@ -79,6 +80,12 @@ function App() {
             path="/edit"
           >
             <EditFabric />
+          </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path="/editQuilt"
+          >
+            <EditQuilt />
           </ProtectedRoute>
 
           <Route

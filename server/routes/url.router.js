@@ -46,6 +46,30 @@ router.get("/generate-presigned-url", (req, res) => {
   });
 });
 
+// Generate presigned URL for a PUT request to upload a quilt
+router.get("/generate-presigned-url-quilt", (req, res) => {
+  const fileName = req.query.fileName;
+  const fileType = req.query.fileType;
+
+  // Params needed for generating a presigned URL
+  const s3Params = {
+    Bucket: "fabricimagebucket", // The S3 bucket name
+    Key: fileName, // The name of the file to be uploaded
+    Expires: 600, // The URL expiration time in seconds (10 minutes)
+    ContentType: fileType, // The content type of the file
+    ACL: "public-read", // Set access control to allow public read access
+  };
+
+  // Generate the presigned URL for the putObject operation
+  s3.getSignedUrl("putObject", s3Params, (err, url) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    // If successful, send the generated URL back in the response
+    res.json({ url });
+  });
+});
+
 
 // Generate multiple presigned urls to GET multiple images
 router.get("/generate-multiple-presigned-urls", async (req, res) => {
@@ -83,7 +107,43 @@ router.get("/generate-multiple-presigned-urls", async (req, res) => {
   }
 });
 
-// Delete the specified image from S3
+// Generate multiple presigned urls to GET multiple quilt images
+router.get("/generate-multiple-presigned-urls-quilts", async (req, res) => {
+  // Splits the names up into an array
+  const quiltNames = req.query.quiltNames.split(",");
+
+  try {
+    // Uses Promise.all to handle multiple asynchronous operations simultaneously. For each image name in the array, it attempts to create a presigned URL
+    const presignedUrls = await Promise.all(
+      quiltNames.map(async (quiltName) => {
+        // Params needed for a presigned URL
+        const s3Params = {
+          Bucket: "fabricimagebucket",
+          Key: quiltName,
+          Expires: 600,
+        };
+
+        // Wait for URLs to be generated
+        return new Promise((resolve, reject) => {
+          // s3.getSignedUrl(operation, params, callback)
+          s3.getSignedUrl("getObject", s3Params, (err, url) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve({ quiltName, url });
+            }
+          });
+        });
+      })
+    );
+    // Responds with a JSON object with the URL(s)
+    res.json(presignedUrls);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Delete the specified fabric image from S3
 router.delete("/delete-fabric", (req, res) => {
   const fabricName = req.query.fabricName;
 
@@ -99,6 +159,25 @@ router.delete("/delete-fabric", (req, res) => {
       return res.status(500).json({ error: err.message });
     }
     res.json({ message: "Fabric deleted successfully", data });
+  });
+});
+
+// Delete the specified quilt image from S3
+router.delete("/delete-quilt", (req, res) => {
+  const quiltName = req.query.quiltName;
+
+  // Params needed for the delete operation
+  const s3Params = {
+    Bucket: "fabricimagebucket", // The S3 bucket name
+    Key: quiltName, // The name of the image to be deleted
+  };
+
+  // Call the S3 deleteObject method to delete the image
+  s3.deleteObject(s3Params, (err, data) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    res.json({ message: "Quilt deleted successfully", data });
   });
 });
 

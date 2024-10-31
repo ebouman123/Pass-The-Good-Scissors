@@ -3,6 +3,8 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import fabrics from './fabric.reducer';
 import chosenFabric from './chosenFabric.reducer';
+import quilts from './quilt.reducer';
+import chosenQuilt from './chosenQuilt.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -14,7 +16,9 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user,
   fabrics,
-  chosenFabric, // will have an id and username if someone is logged in
+  chosenFabric,
+  quilts,
+  chosenQuilt 
 });
 
 export default rootReducer;

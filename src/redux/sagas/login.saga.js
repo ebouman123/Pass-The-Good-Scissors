@@ -53,8 +53,9 @@ function* logoutUser(action) {
     // remove the client-side user object to let
     // the client-side code know the user is logged out
     yield put({ type: 'UNSET_USER' });
-    // Reset the fabric reducer when someone logs out so DisplayFabrics works correctly
+    // Reset the fabric & quilt reducer when someone logs out so DisplayFabrics/Quilts works correctly
     yield put({ type: 'SET_FABRICS', payload: []})
+    yield put({ type: 'SET_QUILTS', payload: []})
   } catch (error) {
     console.log('Error with user logout:', error);
   }

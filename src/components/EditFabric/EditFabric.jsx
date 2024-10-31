@@ -34,13 +34,6 @@ export default function EditFabric() {
     }
   }, [chosenFabric]);
 
-  // const test = () => {
-  //   console.log("fabricName", fabricName);
-  //   console.log("chosenFabric", chosenFabric);
-  //   console.log("currentFabric", currentFabric);
-  //   console.log("currentFabricComment", currentFabric.fabricComment);
-  // };
-
   const handleLink = (event) => {
     if (event.target.value) {
       setLink(event.target.value);

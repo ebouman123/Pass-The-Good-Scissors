@@ -1,6 +1,7 @@
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
+import DisplayQuilts from '../DisplayQuilts/DisplayQuilts';
 
 function Dashboard() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -9,6 +10,9 @@ function Dashboard() {
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <LogOutButton className="btn" />
+      <div>
+        <DisplayQuilts />
+      </div>
     </div>
   );
 }

@@ -11,6 +11,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const fabricRouter = require('./routes/fabric.router')
 const urlRouter = require('./routes/url.router')
+const quiltRouter = require('./routes/quilt.router')
 
 // Express Middleware
 app.use(express.json());
@@ -33,6 +34,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/fabric', fabricRouter)
 app.use('/api/url', urlRouter)
+app.use('/api/quilt', quiltRouter)
 
 // Listen Server & Port
 app.listen(PORT, () => {

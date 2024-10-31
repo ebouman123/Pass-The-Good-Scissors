@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { styled } from "@mui/material/styles";
 
-export default function UploadFabric() {
+export default function UploadQuilt() {
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.user);
@@ -17,7 +17,7 @@ export default function UploadFabric() {
   const [nameInput, setNameInput] = useState(""); // State to hold the inputted file name
 
   // Define the folder where images will be uploaded
-  const folderPath = `${username}/fabrics`;
+  const folderPath = `${username}/quilts`;
 
   // Handle file selection
   const handleFileChange = (e) => {
@@ -41,9 +41,9 @@ export default function UploadFabric() {
   // Check if an image with the same name already exists
   const checkImageExists = async (fileName) => {
     try {
-      const formattedFabricString = fileName.replaceAll("/", "$");
+      const formattedQuiltString = fileName.replaceAll("/", "$");
       const response = await axios.get(
-        `http://localhost:5001/api/fabric/check-fabric-exists?fabricName=${formattedFabricString}`
+        `http://localhost:5001/api/quilt/check-quilt-exists?quiltName=${formattedQuiltString}`
       );
       return response.data.exists; // Return existence status
     } catch (error) {
@@ -63,14 +63,14 @@ export default function UploadFabric() {
     const exists = await checkImageExists(fileName);
     if (exists) {
       alert(
-        "A fabric with this name already exists. Please choose a different name."
+        "A quilt with this name already exists. Please choose a different name."
       );
       return; // Exit if it exists
     }
 
     // Request a presigned URL for uploading the file
     const response = await axios.get(
-      `http://localhost:5001/api/url/generate-presigned-url?fileName=${fileName}&fileType=${fileType}`
+      `http://localhost:5001/api/url/generate-presigned-url-quilt?fileName=${fileName}&fileType=${fileType}`
     );
     const { url } = response.data; // Extract the presigned URL
 
@@ -87,12 +87,12 @@ export default function UploadFabric() {
 
     // Dispatch an action to add the image to the Redux store
     dispatch({
-      type: "ADD_FABRIC",
+      type: "ADD_QUILT",
       payload: fileName, // Store the full path including the folder
     });
     setNameInput("");
   } else {
-    alert('Please enter a name for the fabric!')
+    alert('Please enter a name for the quilt!')
   }
   };
 
@@ -124,20 +124,20 @@ export default function UploadFabric() {
         tabIndex={-1}
         startIcon={<CloudUploadIcon />}
       >
-        Upload a Fabric
+        Upload a Quilt
         <VisuallyHiddenInput type="file" onChange={handleFileChange} />
       </Button>
       {file && <p>File Chosen: {file.name}</p>}
 
       {/* Input for entering the image name */}
       <label htmlFor="imageNameInput">
-        Fabric Name:
+        Quilt Name:
         <TextField
           type="text"
           value={nameInput}
           onChange={handleFileName}
           id="imageNameInput"
-          placeholder="Enter fabric name"
+          placeholder="Enter quilt name"
           variant="outlined"
         />
       </label>
