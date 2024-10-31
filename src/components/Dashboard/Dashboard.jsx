@@ -1,19 +1,17 @@
-import React from 'react';
-import LogOutButton from '../LogOutButton/LogOutButton';
-import {useSelector} from 'react-redux';
-import DisplayQuilts from '../DisplayQuilts/DisplayQuilts';
+import React from "react";
+import { useSelector } from "react-redux";
+import DisplayQuilts from "../DisplayQuilts/DisplayQuilts";
+import { Box } from "@mui/material";
+import { Typography } from "@mui/material";
 
 function Dashboard() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
   return (
-    <div className="container">
-      <h2>Welcome, {user.username}!</h2>
-      <LogOutButton className="btn" />
-      <div>
-        <DisplayQuilts />
-      </div>
-    </div>
+    <Box sx={{p: 0, m: 3}}>
+      <Typography variant="h6">Welcome, {user.username}!</Typography>
+      <DisplayQuilts />
+    </Box>
   );
 }
 

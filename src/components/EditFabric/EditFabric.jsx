@@ -61,9 +61,7 @@ export default function EditFabric() {
     });
     setLinkInput("");
     setCommentInput("");
-    //TODO: Add "Saved" Notification
     alert('Saved!')
-    // history.push("/fabrics");
   };
 
   return (

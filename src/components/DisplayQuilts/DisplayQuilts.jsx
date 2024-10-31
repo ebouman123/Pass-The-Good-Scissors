@@ -73,11 +73,11 @@ export default function DisplayQuilts() {
   };
 
   return (
-    <div>
+    <Box>
       <UploadQuilt />
       <h1>Your Finished Quilts!</h1>
       {quiltUrls.length > 0 ? (
-        <Box sx={{ flexGrow: 1, m: 5 }}>
+        <Box sx={{ flexGrow: 1 }}>
           <Grid
             container
             spacing={4}
@@ -100,9 +100,6 @@ export default function DisplayQuilts() {
                       <Typography gutterBottom variant="h5" component="div">
                         {fileName}
                       </Typography>
-                      {/* <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                    Text Here
-                  </Typography> */}
                     </CardContent>
                     <CardActions>
                       <Button
@@ -129,6 +126,6 @@ export default function DisplayQuilts() {
       ) : (
         <p>No Quilts Uploaded - Upload Your Next Finished Quilt!</p>
       )}
-    </div>
+    </Box>
   );
 }

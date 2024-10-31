@@ -112,7 +112,7 @@ export default function UploadFabric() {
   return (
     <Box
       component="form"
-      sx={{ "& > :not(style)": { m: 1, width: "25ch" } }}
+      sx={{ "& > :not(style)": {marginRight: 3, width: "25ch" } }}
       noValidate
       autoComplete="off"
     >

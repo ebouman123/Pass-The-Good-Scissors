@@ -72,11 +72,11 @@ export default function DisplayFabrics() {
   };
 
   return (
-    <div>
+    <Box sx={{m: 3}}>
       <UploadFabric />
       <h1>Your Saved Fabrics</h1>
       {fabricUrls.length > 0 ? (
-        <Box sx={{ flexGrow: 1, m: 5 }}>
+        <Box sx={{ flexGrow: 1 }}>
           <Grid
             container
             spacing={4}
@@ -99,9 +99,6 @@ export default function DisplayFabrics() {
                       <Typography gutterBottom variant="h5" component="div">
                         {fileName}
                       </Typography>
-                      {/* <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                    Text Here
-                  </Typography> */}
                     </CardContent>
                     <CardActions>
                       <Button
@@ -128,6 +125,6 @@ export default function DisplayFabrics() {
       ) : (
         <p>No Fabrics Uploaded - Try Uploading One!</p>
       )}
-    </div>
+    </Box>
   );
 }
