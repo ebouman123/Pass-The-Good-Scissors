@@ -36,16 +36,14 @@ export default function EditQuilt() {
   useEffect(() => {
     const fetchPresignedUrl = () => {
       if (quiltName) {
-        // Request a presigned URL for the specific quilt
         const formattedQuiltString = quiltName.replaceAll("/", "$");
-
         axios
           .get(`/api/url/generate-presigned-url-quilt/${formattedQuiltString}`)
           .then((response) => {
             setQuiltUrl(response.data);
           })
           .catch((err) => {
-            console.error("error on the front end yo", err);
+            console.error(err);
           });
       }
     };
@@ -97,7 +95,6 @@ export default function EditQuilt() {
         </button>
       </form>
       <button onClick={() => history.push("/dashboard")}>Back</button>
-      {/* <button onClick={test}>TEST</button> */}
     </div>
   );
 }

@@ -4,13 +4,11 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL
 );
 
-CREATE TABLE "project" (
+CREATE TABLE "quilt" (
     "id" SERIAL PRIMARY KEY,
-    "projectName" VARCHAR (80) UNIQUE NOT NULL,
-    "projectComment" VARCHAR (400),
-    "finishedQuiltName" VARCHAR (80) UNIQUE,
-	"finishedQuiltComment" VARCHAR (400),
-	"user_id" INTEGER REFERENCES "user"
+    "quiltName" VARCHAR (80) UNIQUE NOT NULL,
+	"quiltComment" VARCHAR (400),
+	"user_id" INTEGER REFERENCES "user" ON DELETE CASCADE
 );
 
 CREATE TABLE "fabric" (
@@ -18,5 +16,5 @@ CREATE TABLE "fabric" (
     "fabricName" VARCHAR (80) UNIQUE NOT NULL,
     "fabricComment" VARCHAR (400),
     "fabricLink" VARCHAR (200),
-	"user_id" INTEGER REFERENCES "user"
+	"user_id" INTEGER REFERENCES "user" ON DELETE CASCADE
 );
