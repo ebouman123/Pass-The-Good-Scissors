@@ -3,6 +3,14 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import { Divider } from "@mui/material";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
 
 export default function EditFabric() {
   const history = useHistory();
@@ -47,7 +55,9 @@ export default function EditFabric() {
       if (fabricName) {
         const formattedFabricString = fabricName.replaceAll("/", "$");
         axios
-          .get(`/api/url/generate-presigned-url-fabric/${formattedFabricString}`)
+          .get(
+            `/api/url/generate-presigned-url-fabric/${formattedFabricString}`
+          )
           .then((response) => {
             setFabricUrl(response.data);
           })
@@ -93,44 +103,71 @@ export default function EditFabric() {
   };
 
   return (
-    <div>
-      <h1>Add a link or comment to your fabric!</h1>
-      <h2>{formattedFabricName}</h2>
-      <img src={fabricUrl.url} height="1000" />
-      <div>
-        <h3>Comment</h3>
-        {comment ? <p>{comment}</p> : <p>You haven't added a comment yet.</p>}
-      </div>
-      <div>
-        <h3>Fabric Link</h3>
-        {link ? (
-          <p>
-            <a href={link} target="_blank">
-              {link}
-            </a>
-          </p>
-        ) : (
-          <p>You haven't added a link yet.</p>
-        )}
-      </div>
-      <form>
-        <input
-          type="text"
-          placeholder="Add a Link"
-          value={linkInput}
-          onChange={handleLink}
-        />
-        <input
-          type="text"
-          placeholder="Add a Comment"
-          value={commentInput}
-          onChange={handleComment}
-        />
-        <button type="submit" onClick={handleSave}>
-          Save
-        </button>
-      </form>
-      <button onClick={() => history.push("/fabrics")}>Back</button>
-    </div>
+    <Box sx={{ marginLeft: 3 }}>
+      <Typography
+        variant="h4"
+        sx={{ display: "flex", justifyContent: "center" }}
+      >
+        Add a link or comment to your fabric!
+      </Typography>
+      <Divider sx={{ marginTop: 3, marginBottom: 3 }} />
+      <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
+        <Box>
+          <div>
+            <h3>Comment</h3>
+            {comment ? (
+              <p>{comment}</p>
+            ) : (
+              <p>You haven't added a comment yet.</p>
+            )}
+          </div>
+          <div>
+            <h3>Fabric Link</h3>
+            {link ? (
+              <p>
+                <a href={link} target="_blank">
+                  {link}
+                </a>
+              </p>
+            ) : (
+              <p>You haven't added a link yet.</p>
+            )}
+          </div>
+          <form>
+            <input
+              type="text"
+              placeholder="Add a Link"
+              value={linkInput}
+              onChange={handleLink}
+            />
+            <input
+              type="text"
+              placeholder="Add a Comment"
+              value={commentInput}
+              onChange={handleComment}
+            />
+            <button type="submit" onClick={handleSave}>
+              Save
+            </button>
+          </form>
+          <button onClick={() => history.push("/fabrics")}>Back</button>
+        </Box>
+        <Box>
+          <Card sx={{ width: 750 }}>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {formattedFabricName}
+              </Typography>
+            </CardContent>
+            <CardMedia
+              sx={{ height: 750 }}
+              image={fabricUrl.url}
+              title={formattedFabricName}
+            />
+          </Card>
+          {/* <img src={fabricUrl.url} height="1000" /> */}
+        </Box>
+      </Box>
+    </Box>
   );
 }

@@ -6,6 +6,9 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { styled } from "@mui/material/styles";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
 
 export default function UploadFabric() {
   const dispatch = useDispatch();
@@ -80,20 +83,20 @@ export default function UploadFabric() {
       },
     };
 
-    if (nameInput){
-    // Upload the file to the presigned URL
-    await axios.put(url, file, options);
-    alert("File uploaded successfully!");
+    if (nameInput) {
+      // Upload the file to the presigned URL
+      await axios.put(url, file, options);
+      alert("File uploaded successfully!");
 
-    // Dispatch an action to add the image to the Redux store
-    dispatch({
-      type: "ADD_FABRIC",
-      payload: fileName, // Store the full path including the folder
-    });
-    setNameInput("");
-  } else {
-    alert('Please enter a name for the fabric!')
-  }
+      // Dispatch an action to add the image to the Redux store
+      dispatch({
+        type: "ADD_FABRIC",
+        payload: fileName, // Store the full path including the folder
+      });
+      setNameInput("");
+    } else {
+      alert("Please enter a name for the fabric!");
+    }
   };
 
   // Hides the file input in a button
@@ -110,41 +113,47 @@ export default function UploadFabric() {
   });
 
   return (
-    <Box
-      component="form"
-      sx={{ "& > :not(style)": {marginRight: 3, width: "25ch" } }}
-      noValidate
-      autoComplete="off"
-    >
-      {/* Input for selecting a file */}
-      <Button
-        component="label"
-        role={undefined}
-        variant="contained"
-        tabIndex={-1}
-        startIcon={<CloudUploadIcon />}
-      >
-        Upload a Fabric
-        <VisuallyHiddenInput type="file" onChange={handleFileChange} />
-      </Button>
-      {file && <p>File Chosen: {file.name}</p>}
-
-      {/* Input for entering the image name */}
-      <label htmlFor="imageNameInput">
-        Fabric Name:
-        <TextField
-          type="text"
-          value={nameInput}
-          onChange={handleFileName}
-          id="imageNameInput"
-          placeholder="Enter fabric name"
-          variant="outlined"
-        />
-      </label>
-      {/* Button to trigger the upload process */}
-      <Button variant="outlined" onClick={handleUpload}>
-        Upload
-      </Button>
+    <Box component="form" noValidate autoComplete="off">
+      <List sx={{ p: 0 }}>
+        <ListItemText>1. Choose your fabric</ListItemText>
+        <ListItem sx={{ paddingLeft: 0 }}>
+          <Button
+            component="label"
+            sx={{ marginRight: 3 }}
+            role={undefined}
+            variant="contained"
+            color="secondary"
+            tabIndex={-1}
+            startIcon={<CloudUploadIcon />}
+          >
+            Upload a Fabric
+            <VisuallyHiddenInput type="file" onChange={handleFileChange} />
+          </Button>
+          {file && <p>File Chosen: {file.name}</p>}
+        </ListItem>
+        <ListItemText>2. Enter a name for your fabric</ListItemText>
+        <ListItem sx={{ paddingLeft: 0 }}>
+          <label htmlFor="imageNameInput">
+            <TextField
+              type="text"
+              label="Fabric Name"
+              value={nameInput}
+              onChange={handleFileName}
+              id="imageNameInput"
+              placeholder="Enter fabric name"
+              variant="outlined"
+              color="secondary"
+              size="small"
+            />
+          </label>
+        </ListItem>
+        <ListItemText>3. Upload your fabric!</ListItemText>
+        <ListItem sx={{ paddingLeft: 0 }}>
+          <Button variant="contained" color="secondary" onClick={handleUpload}>
+            Upload
+          </Button>
+        </ListItem>
+      </List>
     </Box>
   );
 }

@@ -3,6 +3,10 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 
 export default function EditQuilt() {
   const history = useHistory();
@@ -80,7 +84,7 @@ export default function EditQuilt() {
   };
 
   return (
-    <div>
+    <Box sx={{ marginLeft: 3 }}>
       <h1>Add a comment for your quilt!</h1>
       <h2>{formattedQuiltName}</h2>
       <img src={quiltUrl.url} height="1000" />
@@ -100,6 +104,6 @@ export default function EditQuilt() {
         </button>
       </form>
       <button onClick={() => history.push("/dashboard")}>Back</button>
-    </div>
+    </Box>
   );
 }

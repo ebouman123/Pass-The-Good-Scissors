@@ -34,7 +34,6 @@ export default function DisplayQuilts() {
       const quiltNames = quilts.map((quilt) => quilt.quiltName).join(",");
       if (quiltNames) {
         try {
-            console.log('quiltNAmes', quiltNames)
           // Request presigned URLs for the quilts
           const response = await axios.get(
             `/api/url/generate-multiple-presigned-urls-quilts?quiltNames=${quiltNames}`
@@ -75,7 +74,9 @@ export default function DisplayQuilts() {
   return (
     <Box>
       <UploadQuilt />
-      <h1>Your Finished Quilts!</h1>
+      <Typography variant="h4" sx={{ marginTop: 3, marginBottom: 3 }}>
+        Your Finished Quilts!
+      </Typography>
       {quiltUrls.length > 0 ? (
         <Box sx={{ flexGrow: 1 }}>
           <Grid

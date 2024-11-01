@@ -9,7 +9,7 @@ function Dashboard() {
   const user = useSelector((store) => store.user);
   return (
     <Box sx={{p: 0, m: 3}}>
-      <Typography variant="h6">Welcome, {user.username}!</Typography>
+      <Typography variant="h5" sx={{marginBottom: 3}}>🐈 Welcome, {user.username}! 🐈</Typography>
       <DisplayQuilts />
     </Box>
   );

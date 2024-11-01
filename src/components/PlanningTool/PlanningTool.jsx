@@ -2,6 +2,15 @@ import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import Square from "../Square/Square";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Grid from "@mui/material/Grid2";
+import { Typography } from "@mui/material";
 
 export default function PlanningTool() {
   const dispatch = useDispatch();
@@ -167,63 +176,66 @@ export default function PlanningTool() {
     // link.href sets the href to the png we created
     link.href = imageUrl;
     // Indicates that this link is to be downloaded
-    link.download = "checkerboard_quilt_pattern.png";
+    link.download = "Super_Cool_Quilt.png";
     // "Clicks" the link
     link.click();
   };
 
   return (
-    <>
-      <h1>Plan Your Quilt!</h1>
-      <div style={{ display: "flex" }}>
-        <div
-          style={{
+    <Box sx={{ marginLeft: 3 }}>
+      <Typography variant="h4">Plan Your Quilt!</Typography>
+      <Box sx={{ display: "flex" }}>
+        <Box
+          sx={{
             width: "600px",
             borderRight: "1px solid #ccc",
             padding: "10px",
           }}
         >
-          <h2>Select a Fabric</h2>
+          <Typography variant="h5">Select a Fabric</Typography>
           {/* Display fabric options for selection in a grid */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-              gap: "10px",
-            }}
+          <Grid
+            container
+            spacing={4}
+            direction="row"
+            justify="flex-start"
+            alignItems="flex-start"
+            sx={{ overflow: "auto", maxHeight: 800 }}
           >
-            {fabricUrls.map((fabric, index) => {
+            {fabricUrls.map((fabric) => {
               // Extract just the file name from the fabric name
               const fileName = fabric.fabricName.split("/").pop(); // Get the last part of the path
 
               return (
-                <div
-                  key={index}
-                  style={{
-                    cursor: "pointer",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                  }}
-                >
-                  <img
-                    src={fabric.url}
-                    alt={fileName}
-                    width={200}
-                    height={200}
-                    onClick={() => handleFabricClick(fabric.url, fileName)} // Pass alt text as well
-                    style={{
+                <Grid>
+                  <Card
+                    sx={{
+                      width: 200,
+                      height: 200,
                       border:
                         selectedFabric === fabric.url
                           ? "2px solid blue"
-                          : "none", // Highlight selected fabric
+                          : "none",
                     }}
-                  />
-                  <p style={{ textAlign: "center" }}>{fileName}</p>
-                </div>
+                    key={fabric.url}
+                    onClick={() => handleFabricClick(fabric.url, fileName)} // Pass alt text as well
+                  >
+                    <CardMedia
+                      sx={{ height: 150 }}
+                      image={fabric.url}
+                      title={fileName}
+                      alt={fileName}
+                    />
+                    <CardContent sx={{ maxHeight: 50 }}>
+                      <Typography noWrap='true' gutterBottom variant="body" component="div">
+                        {fileName}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
               );
             })}
-          </div>
+          </Grid>
 
           {/* Input fields to choose number of rows and columns */}
           <div style={{ marginTop: "20px" }}>
@@ -259,7 +271,7 @@ export default function PlanningTool() {
           <button onClick={exportToImage} style={{ marginTop: "10px" }}>
             Export as Image
           </button>
-        </div>
+        </Box>
 
         <div style={{ flexGrow: 1, padding: "10px" }}>
           <div
@@ -283,7 +295,7 @@ export default function PlanningTool() {
           </div>
           <canvas ref={canvasRef} style={{ display: "none" }} />
         </div>
-      </div>
-    </>
+      </Box>
+    </Box>
   );
 }

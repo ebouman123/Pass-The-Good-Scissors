@@ -72,9 +72,11 @@ export default function DisplayFabrics() {
   };
 
   return (
-    <Box sx={{m: 3}}>
+    <Box sx={{ m: 3 }}>
       <UploadFabric />
-      <h1>Your Saved Fabrics</h1>
+      <Typography variant="h4" sx={{ marginTop: 3, marginBottom: 3 }}>
+        Your Saved Fabrics
+      </Typography>
       {fabricUrls.length > 0 ? (
         <Box sx={{ flexGrow: 1 }}>
           <Grid
