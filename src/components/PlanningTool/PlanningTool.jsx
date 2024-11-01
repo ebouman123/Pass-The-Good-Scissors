@@ -21,7 +21,6 @@ export default function PlanningTool() {
   const [fabricUrls, setFabricUrls] = useState([]); // URLs of fabrics for the fabric selection
   const [fabricUsage, setFabricUsage] = useState(Array(rows * cols).fill(null)); // Track fabric names used
 
-  // Fetch fabrics when the component mounts
   useEffect(() => {
     dispatch({ type: "FETCH_FABRICS" });
   }, [dispatch]);

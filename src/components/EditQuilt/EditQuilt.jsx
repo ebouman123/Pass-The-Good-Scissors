@@ -9,7 +9,9 @@ export default function EditQuilt() {
   const dispatch = useDispatch();
   const location = useLocation();
 
+  // DisplayQuilts sets the state with the chosen quilt name, then we reference it here
   const quiltName = location.state;
+  // Take off the prefixes to get rid of the S3 folders
   const formattedQuiltName = quiltName.split("/").pop();
 
   const chosenQuilt = useSelector((store) => store.chosenQuilt);
@@ -18,6 +20,7 @@ export default function EditQuilt() {
   const [comment, setComment] = useState("");
   const [commentInput, setCommentInput] = useState("");
 
+  // Holds the presigned URL from S3
   const [quiltUrl, setQuiltUrl] = useState([]);
 
   useEffect(() => {
@@ -27,12 +30,14 @@ export default function EditQuilt() {
     });
   }, []);
 
+  // Waits for chosenQuilt to pull, then sets the comment to the DB value
   useEffect(() => {
     if (chosenQuilt.length > 0) {
       setComment(currentQuilt.quiltComment);
     }
   }, [chosenQuilt]);
 
+  // Fetches the presigned URL from S3 for the chosen quilt image
   useEffect(() => {
     const fetchPresignedUrl = () => {
       if (quiltName) {

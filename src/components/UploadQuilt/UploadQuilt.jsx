@@ -70,7 +70,7 @@ export default function UploadQuilt() {
 
     // Request a presigned URL for uploading the file
     const response = await axios.get(
-      `http://localhost:5001/api/url/generate-presigned-url-quilt?fileName=${fileName}&fileType=${fileType}`
+      `http://localhost:5001/api/url/generate-presigned-url?fileName=${fileName}&fileType=${fileType}`
     );
     const { url } = response.data; // Extract the presigned URL
 

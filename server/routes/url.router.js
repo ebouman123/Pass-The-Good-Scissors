@@ -46,29 +46,29 @@ router.get("/generate-presigned-url", (req, res) => {
   });
 });
 
-// Generate presigned URL for a PUT request to upload a quilt
-router.get("/generate-presigned-url-quilt", (req, res) => {
-  const fileName = req.query.fileName;
-  const fileType = req.query.fileType;
+// // Generate presigned URL for a PUT request to upload a quilt
+// router.get("/generate-presigned-url-quilt", (req, res) => {
+//   const fileName = req.query.fileName;
+//   const fileType = req.query.fileType;
 
-  // Params needed for generating a presigned URL
-  const s3Params = {
-    Bucket: "fabricimagebucket", // The S3 bucket name
-    Key: fileName, // The name of the file to be uploaded
-    Expires: 600, // The URL expiration time in seconds (10 minutes)
-    ContentType: fileType, // The content type of the file
-    ACL: "public-read", // Set access control to allow public read access
-  };
+//   // Params needed for generating a presigned URL
+//   const s3Params = {
+//     Bucket: "fabricimagebucket", // The S3 bucket name
+//     Key: fileName, // The name of the file to be uploaded
+//     Expires: 600, // The URL expiration time in seconds (10 minutes)
+//     ContentType: fileType, // The content type of the file
+//     ACL: "public-read", // Set access control to allow public read access
+//   };
 
-  // Generate the presigned URL for the putObject operation
-  s3.getSignedUrl("putObject", s3Params, (err, url) => {
-    if (err) {
-      return res.status(500).json({ error: err.message });
-    }
-    // If successful, send the generated URL back in the response
-    res.json({ url });
-  });
-});
+//   // Generate the presigned URL for the putObject operation
+//   s3.getSignedUrl("putObject", s3Params, (err, url) => {
+//     if (err) {
+//       return res.status(500).json({ error: err.message });
+//     }
+//     // If successful, send the generated URL back in the response
+//     res.json({ url });
+//   });
+// });
 
 
 // Generate multiple presigned urls to GET multiple images
@@ -138,6 +138,41 @@ router.get("/generate-multiple-presigned-urls-quilts", async (req, res) => {
     );
     // Responds with a JSON object with the URL(s)
     res.json(presignedUrls);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Generate a presigned url for the chosen fabric
+router.get("/generate-presigned-url-fabric/:fabricName", async (req, res) => {
+  const fabricName = req.params.fabricName;
+  const formattedFabricName = fabricName.replaceAll("$", "/");
+
+  if (!formattedFabricName) {
+    return res.status(400).json({ error: "fabricName is required" });
+  }
+
+  try {
+    // Params needed for a presigned URL
+    const s3Params = {
+      Bucket: "fabricimagebucket",
+      Key: formattedFabricName,
+      Expires: 600,
+    };
+
+    // Generate the presigned URL
+    const url = await new Promise((resolve, reject) => {
+      s3.getSignedUrl("getObject", s3Params, (err, url) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(url);
+        }
+      });
+    });
+
+    // Respond with the presigned URL
+    res.json({ formattedFabricName, url });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

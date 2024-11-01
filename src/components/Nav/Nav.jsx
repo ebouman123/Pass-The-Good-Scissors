@@ -14,8 +14,8 @@ function Nav() {
 
   return (
     <Box sx={{ flexGrow: 1, marginBottom: 4 }}>
-      <AppBar position="relative" sx={{height: 80}}>
-        <Toolbar sx={{height: 80}}>
+      <AppBar position="relative" sx={{ height: 80 }}>
+        <Toolbar sx={{ height: 80 }}>
           <Link
             component={RouterLink}
             color="#fafafa"
