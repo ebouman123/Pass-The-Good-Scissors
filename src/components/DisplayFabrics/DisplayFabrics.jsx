@@ -14,6 +14,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 
 export default function DisplayFabrics() {
   const dispatch = useDispatch();
@@ -21,6 +26,9 @@ export default function DisplayFabrics() {
 
   const fabrics = useSelector((store) => store.fabrics); // Get images from Redux store
   const [fabricUrls, setFabricUrls] = useState([]); // State to store presigned image URLs
+
+  const [open, setOpen] = useState(false);
+  const [fabricToDelete, setFabricToDelete] = useState("");
 
   // Fetch images when the component mounts
   useEffect(() => {
@@ -49,8 +57,20 @@ export default function DisplayFabrics() {
     }
   }, [fabrics]);
 
+  // Opens the dialog and sets fabricToDelete state
+  const handleClickOpen = (fabric) => {
+    setOpen(true);
+    setFabricToDelete(fabric);
+  };
+
+  // Closes the dialog
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   // Function to delete an fabric
   const deleteFabric = async (fabric) => {
+    setOpen(false);
     try {
       // Send a request to delete the fabric from the server
       await axios.delete(
@@ -90,8 +110,8 @@ export default function DisplayFabrics() {
               // Extract just the file name from the fabric name
               const fileName = fabric.fabricName.split("/").pop(); // Get the last part of the path
               return (
-                <Grid xs={12} sm={6} md={3}>
-                  <Card sx={{ width: 385 }} key={fabric.fabricName}>
+                <Grid xs={12} sm={6} md={3} key={fabric.fabricName}>
+                  <Card sx={{ width: 385 }}>
                     <CardMedia
                       sx={{ height: 385 }}
                       image={fabric.url}
@@ -105,11 +125,38 @@ export default function DisplayFabrics() {
                     <CardActions>
                       <Button
                         variant="outlined"
-                        onClick={() => deleteFabric(fabric)}
+                        // Need to pass the fabric to state because of how Dialogs initialize
+                        onClick={() => handleClickOpen(fabric)}
                         startIcon={<DeleteIcon />}
                       >
                         Delete
                       </Button>
+                      <Dialog
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                      >
+                        <DialogTitle id="alert-dialog-title">
+                          {"Permanently Delete This Fabric?"}
+                        </DialogTitle>
+                        <DialogContent>
+                          <DialogContentText id="alert-dialog-description">
+                            This action cannot be undone.
+                          </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                          <Button
+                            onClick={() => deleteFabric(fabricToDelete)}
+                            startIcon={<DeleteIcon />}
+                          >
+                            Delete
+                          </Button>
+                          <Button onClick={handleClose} variant="contained">
+                            Cancel
+                          </Button>
+                        </DialogActions>
+                      </Dialog>
                       <Button
                         variant="contained"
                         onClick={() => handleEdit(fabric.fabricName)}

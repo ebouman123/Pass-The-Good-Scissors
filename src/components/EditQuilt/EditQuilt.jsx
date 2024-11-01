@@ -7,6 +7,10 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import { Divider } from "@mui/material";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
 
 export default function EditQuilt() {
   const history = useHistory();
@@ -85,25 +89,51 @@ export default function EditQuilt() {
 
   return (
     <Box sx={{ marginLeft: 3 }}>
-      <h1>Add a comment for your quilt!</h1>
-      <h2>{formattedQuiltName}</h2>
-      <img src={quiltUrl.url} height="1000" />
-      <div>
-        <h3>Comment</h3>
-        {comment ? <p>{comment}</p> : <p>You haven't added a comment yet.</p>}
-      </div>
-      <form>
-        <input
-          type="text"
-          placeholder="Add a Comment"
-          value={commentInput}
-          onChange={handleComment}
-        />
-        <button type="submit" onClick={handleSave}>
-          Save
-        </button>
-      </form>
-      <button onClick={() => history.push("/dashboard")}>Back</button>
+      <Typography
+        variant="h4"
+        sx={{ display: "flex", justifyContent: "center" }}
+      >
+        Add a comment to your quilt!
+      </Typography>
+      <Divider sx={{ marginTop: 3, marginBottom: 3 }} />
+      <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
+        <Box>
+          <div>
+            <h3>Comment</h3>
+            {comment ? (
+              <p>{comment}</p>
+            ) : (
+              <p>You haven't added a comment yet.</p>
+            )}
+          </div>
+          <form>
+            <input
+              type="text"
+              placeholder="Add a Comment"
+              value={commentInput}
+              onChange={handleComment}
+            />
+            <button type="submit" onClick={handleSave}>
+              Save
+            </button>
+          </form>
+          <button onClick={() => history.push("/dashboard")}>Back</button>
+        </Box>
+        <Box>
+          <Card sx={{ width: 750 }}>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {formattedQuiltName}
+              </Typography>
+            </CardContent>
+            <CardMedia
+              sx={{ height: 750 }}
+              image={quiltUrl.url}
+              title={formattedQuiltName}
+            />
+          </Card>
+        </Box>
+      </Box>
     </Box>
   );
 }

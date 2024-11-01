@@ -165,7 +165,6 @@ export default function EditFabric() {
               title={formattedFabricName}
             />
           </Card>
-          {/* <img src={fabricUrl.url} height="1000" /> */}
         </Box>
       </Box>
     </Box>

@@ -194,6 +194,7 @@ export default function PlanningTool() {
         >
           <Typography variant="h5">Select a Fabric</Typography>
           {/* Display fabric options for selection in a grid */}
+          {fabricUrls.length > 0 ? 
           <Grid
             container
             spacing={4}
@@ -207,7 +208,7 @@ export default function PlanningTool() {
               const fileName = fabric.fabricName.split("/").pop(); // Get the last part of the path
 
               return (
-                <Grid>
+                <Grid key={fabric.url}>
                   <Card
                     sx={{
                       width: 200,
@@ -217,7 +218,6 @@ export default function PlanningTool() {
                           ? "2px solid blue"
                           : "none",
                     }}
-                    key={fabric.url}
                     onClick={() => handleFabricClick(fabric.url, fileName)} // Pass alt text as well
                   >
                     <CardMedia
@@ -227,7 +227,12 @@ export default function PlanningTool() {
                       alt={fileName}
                     />
                     <CardContent sx={{ maxHeight: 50 }}>
-                      <Typography noWrap='true' gutterBottom variant="body" component="div">
+                      <Typography
+                        noWrap={true}
+                        gutterBottom
+                        variant="body"
+                        component="div"
+                      >
                         {fileName}
                       </Typography>
                     </CardContent>
@@ -236,6 +241,7 @@ export default function PlanningTool() {
               );
             })}
           </Grid>
+          : <Box><Typography>Add some fabrics, idiot</Typography></Box>}
 
           {/* Input fields to choose number of rows and columns */}
           <div style={{ marginTop: "20px" }}>
