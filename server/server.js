@@ -22,7 +22,7 @@ app.use(express.static('build'));
 app.use(sessionMiddleware);
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*'); // Adjust as needed for security
+  res.header('Access-Control-Allow-Origin', '*'); 
   next();
 });
 
