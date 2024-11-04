@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
+import { TourProvider } from "@reactour/tour";
+import steps from "../../steps";
 
 import Nav from "../Nav/Nav";
 import Footer from "../Footer/Footer";
@@ -22,13 +24,16 @@ import DisplayFabrics from "../DisplayFabrics/DisplayFabrics";
 import PlanningTool from "../PlanningTool/PlanningTool";
 import EditFabric from "../EditFabric/EditFabric";
 import EditQuilt from "../EditQuilt/EditQuilt";
+import DisplayQuilts from "../DisplayQuilts/DisplayQuilts";
+
+import DisplayFabricsTutorial from "../Tutorials/DisplayFabricsTutorial/DisplayFabricsTutorial";
+import DisplayQuiltsTutorial from "../Tutorials/DisplayQuiltsTutorial/DisplayQuiltsTutorial";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 
 import "./App.css";
 
@@ -44,102 +49,111 @@ function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: "#389a74", // Your primary color
+        main: "#4447a3",
+        light: "#a2a7d6",
+        contrastText: "#fff",
       },
       secondary: {
-        main: "#385e9a", // Your secondary color
+        main: "#b0494d",
+        light: "#c67d84",
+        contrastText: "#fff",
       },
     },
     typography: {
-      fontFamily: "Roboto, sans-serif", // Your preferred font family
+      fontFamily: "Roboto, sans-serif",
     },
-    // Other theme customizations (spacing, shadows, etc.)
   });
 
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <div>
-          <Nav />
-          <Switch>
-            {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
-            <Redirect exact from="/" to="/landing" />
+      <TourProvider steps={steps}>
+        <Router>
+          <div>
+            <Nav />
+            <Switch>
+              {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
+              <Redirect exact from="/" to="/landing" />
 
-            {/* Visiting localhost:5173/about will show the about page. */}
-            <Route
-              // shows AboutPage at all times (logged in or not)
-              exact
-              path="/about"
-            >
-              <AboutPage />
-            </Route>
+              {/* Visiting localhost:5173/about will show the about page. */}
+              <Route
+                // shows AboutPage at all times (logged in or not)
+                exact
+                path="/about"
+              >
+                <AboutPage />
+              </Route>
 
-            {/* For protected routes, the view could show one of several things on the same route.
-            Visiting localhost:5173/user will show the UserPage if the user is logged in.
-            If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
-            Even though it seems like they are different pages, the user is always on localhost:5173/user */}
-            <ProtectedRoute
-              // logged in shows UserPage else shows LoginPage
-              exact
-              path="/dashboard"
-            >
-              <Dashboard />
-            </ProtectedRoute>
+              <ProtectedRoute
+                exact
+                path="/dashboard"
+              >
+                <Dashboard />
+              </ProtectedRoute>
 
-            <ProtectedRoute exact path="/fabrics">
-              <DisplayFabrics />
-            </ProtectedRoute>
-            <ProtectedRoute exact path="/planning">
-              <PlanningTool />
-            </ProtectedRoute>
-            <ProtectedRoute exact path="/edit">
-              <EditFabric />
-            </ProtectedRoute>
-            <ProtectedRoute exact path="/editQuilt">
-              <EditQuilt />
-            </ProtectedRoute>
+              <ProtectedRoute exact path="/quilts">
+                <DisplayQuilts />
+              </ProtectedRoute>
+              <ProtectedRoute exact path="/quiltsTutorial">
+                <DisplayQuiltsTutorial />
+              </ProtectedRoute>
+              <ProtectedRoute exact path="/fabrics">
+                <DisplayFabrics />
+              </ProtectedRoute>
+              <ProtectedRoute exact path="/fabricsTutorial">
+                <DisplayFabricsTutorial />
+              </ProtectedRoute>
+              <ProtectedRoute exact path="/planning">
+                <PlanningTool />
+              </ProtectedRoute>
+              <ProtectedRoute exact path="/edit">
+                <EditFabric />
+              </ProtectedRoute>
+              <ProtectedRoute exact path="/editQuilt">
+                <EditQuilt />
+              </ProtectedRoute>
 
-            <Route exact path="/login">
-              {user.id ? (
-                // If the user is already logged in,
-                // redirect to the /user page
-                <Redirect to="/dashboard" />
-              ) : (
-                // Otherwise, show the login page
-                <LoginPage />
-              )}
-            </Route>
+              <Route exact path="/login">
+                {user.id ? (
+                  // If the user is already logged in,
+                  // redirect to the /user page
+                  <Redirect to="/dashboard" />
+                ) : (
+                  // Otherwise, show the login page
+                  <LoginPage />
+                )}
+              </Route>
 
-            <Route exact path="/registration">
-              {user.id ? (
-                // If the user is already logged in,
-                // redirect them to the /user page
-                <Redirect to="/dashboard" />
-              ) : (
-                // Otherwise, show the registration page
-                <RegisterPage />
-              )}
-            </Route>
+              <Route exact path="/registration">
+                {user.id ? (
+                  // If the user is already logged in,
+                  // redirect them to the /user page
+                  <Redirect to="/dashboard" />
+                ) : (
+                  // Otherwise, show the registration page
+                  <RegisterPage />
+                )}
+              </Route>
 
-            <Route exact path="/landing">
-              {user.id ? (
-                // If the user is already logged in,
-                // redirect them to the /user page
-                <Redirect to="/dashboard" />
-              ) : (
-                // Otherwise, show the Landing page
-                <LandingPage />
-              )}
-            </Route>
+              <Route exact path="/landing">
+                {user.id ? (
+                  // If the user is already logged in,
+                  // redirect them to the /user page
+                  <Redirect to="/dashboard" />
+                ) : (
+                  // Otherwise, show the Landing page
+                  <LandingPage />
+                )}
+              </Route>
 
-            {/* If none of the other routes matched, we will show a 404. */}
-            <Route>
-              <h1>404</h1>
-            </Route>
-          </Switch>
-          <Footer />
-        </div>
-      </Router>
+              {/* If none of the other routes matched, we will show a 404. */}
+              <Route>
+                <h1>404</h1>
+              </Route>
+            </Switch>
+            <Footer />
+          </div>
+        </Router>
+      </TourProvider>
     </ThemeProvider>
   );
 }

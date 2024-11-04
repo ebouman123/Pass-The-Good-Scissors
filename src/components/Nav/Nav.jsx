@@ -77,6 +77,15 @@ function Nav() {
                   component={RouterLink}
                   sx={{ textDecoration: "none" }}
                   color="#fafafa"
+                  to="/quilts"
+                >
+                  Finished Quilts
+                </Link>
+
+                <Link
+                  component={RouterLink}
+                  sx={{ textDecoration: "none" }}
+                  color="#fafafa"
                   to="/fabrics"
                 >
                   Manage Fabrics

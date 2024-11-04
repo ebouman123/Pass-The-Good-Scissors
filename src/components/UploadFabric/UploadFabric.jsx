@@ -122,7 +122,6 @@ export default function UploadFabric() {
             sx={{ marginRight: 3 }}
             role={undefined}
             variant="contained"
-            color="secondary"
             tabIndex={-1}
             startIcon={<CloudUploadIcon />}
           >
@@ -142,14 +141,13 @@ export default function UploadFabric() {
               id="imageNameInput"
               placeholder="Enter fabric name"
               variant="outlined"
-              color="secondary"
               size="small"
             />
           </label>
         </ListItem>
         <ListItemText>3. Upload your fabric!</ListItemText>
         <ListItem sx={{ paddingLeft: 0 }}>
-          <Button variant="contained" color="secondary" onClick={handleUpload}>
+          <Button variant="contained" onClick={handleUpload}>
             Upload
           </Button>
         </ListItem>

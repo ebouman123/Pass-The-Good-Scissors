@@ -122,7 +122,6 @@ export default function UploadQuilt() {
             sx={{ marginRight: 3 }}
             role={undefined}
             variant="contained"
-            color="secondary"
             tabIndex={-1}
             startIcon={<CloudUploadIcon />}
           >
@@ -136,7 +135,6 @@ export default function UploadQuilt() {
           <label htmlFor="imageNameInput">
             <TextField
               type="text"
-              color="secondary"
               label="Quilt Name"
               value={nameInput}
               onChange={handleFileName}
@@ -149,7 +147,7 @@ export default function UploadQuilt() {
         </ListItem>
         <ListItemText>3. Upload your awesome quilt!</ListItemText>
         <ListItem sx={{ paddingLeft: 0 }}>
-          <Button variant="contained" color="secondary" onClick={handleUpload}>
+          <Button variant="contained" onClick={handleUpload}>
             Upload
           </Button>
         </ListItem>

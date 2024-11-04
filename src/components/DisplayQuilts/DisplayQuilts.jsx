@@ -92,7 +92,7 @@ export default function DisplayQuilts() {
   };
 
   return (
-    <Box>
+    <Box sx={{m: 3}}>
       <UploadQuilt />
       <Typography variant="h4" sx={{ marginTop: 3, marginBottom: 3 }}>
         Your Finished Quilts!
@@ -128,6 +128,7 @@ export default function DisplayQuilts() {
                         // Need to pass the quilt to state because of how Dialogs initialize
                         onClick={() => handleClickOpen(quilt)}
                         startIcon={<DeleteIcon />}
+                        color="secondary"
                       >
                         Delete
                       </Button>
@@ -149,6 +150,7 @@ export default function DisplayQuilts() {
                           <Button
                             onClick={() => deleteQuilt(quiltToDelete)}
                             startIcon={<DeleteIcon />}
+                            color="secondary"
                           >
                             Delete
                           </Button>

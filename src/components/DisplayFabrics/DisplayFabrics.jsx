@@ -128,6 +128,7 @@ export default function DisplayFabrics() {
                         // Need to pass the fabric to state because of how Dialogs initialize
                         onClick={() => handleClickOpen(fabric)}
                         startIcon={<DeleteIcon />}
+                        color="secondary"
                       >
                         Delete
                       </Button>
@@ -149,6 +150,7 @@ export default function DisplayFabrics() {
                           <Button
                             onClick={() => deleteFabric(fabricToDelete)}
                             startIcon={<DeleteIcon />}
+                            color="secondary"
                           >
                             Delete
                           </Button>

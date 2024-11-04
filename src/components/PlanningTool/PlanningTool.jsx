@@ -12,6 +12,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid2";
 import { Typography } from "@mui/material";
 
+
 export default function PlanningTool() {
   const dispatch = useDispatch();
   const canvasRef = useRef(null);
@@ -264,19 +265,19 @@ export default function PlanningTool() {
               />
             </label>
           </div>
-          <button onClick={resetSquares} style={{ marginTop: "20px" }}>
+          <Button onClick={resetSquares} variant="outlined" style={{ marginTop: "10px" }}>
             Reset All Squares
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => setIsNextSquareWhite(true)} // Set toggle for next square to white
             style={{ marginTop: "10px" }}
-            title="Click to make the next square you click white"
+            variant="outlined"
           >
             Clear Individual Squares
-          </button>
-          <button onClick={exportToImage} style={{ marginTop: "10px" }}>
+          </Button>
+          <Button onClick={exportToImage} variant="contained" style={{ marginTop: "10px" }}>
             Export as Image
-          </button>
+          </Button>
         </Box>
 
         <div style={{ flexGrow: 1, padding: "10px" }}>

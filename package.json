@@ -11,6 +11,7 @@
     "@fontsource/roboto": "^5.1.0",
     "@mui/icons-material": "^6.1.6",
     "@mui/material": "^6.1.6",
+    "@reactour/tour": "^3.7.0",
     "aws-sdk": "^2.1691.0",
     "axios": "^1.6.8",
     "bcryptjs": "^2.4.3",

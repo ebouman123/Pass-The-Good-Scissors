@@ -18,7 +18,8 @@ const rootReducer = combineReducers({
   fabrics,
   chosenFabric,
   quilts,
-  chosenQuilt 
+  chosenQuilt,
+  
 });
 
 export default rootReducer;
