@@ -103,7 +103,7 @@ export default function PlanningTool() {
       // Attempt to increase the resolution of the images
       const scale = window.devicePixelRatio || 1;
       // Add a bit for the fabric list on the right
-      canvas.width = (cols * defaultSquareSize + 130) * scale;
+      canvas.width = (cols * defaultSquareSize + 250) * scale;
       canvas.height = rows * defaultSquareSize * scale;
       context.scale(scale, scale);
 
