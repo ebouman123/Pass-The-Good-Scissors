@@ -28,6 +28,7 @@ import DisplayQuilts from "../DisplayQuilts/DisplayQuilts";
 
 import DisplayFabricsTutorial from "../Tutorials/DisplayFabricsTutorial/DisplayFabricsTutorial";
 import DisplayQuiltsTutorial from "../Tutorials/DisplayQuiltsTutorial/DisplayQuiltsTutorial";
+import PlanningToolTutorial from "../Tutorials/PlanningToolTutorial/PlanningToolTutorial";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "@fontsource/roboto/300.css";
@@ -104,6 +105,9 @@ function App() {
               </ProtectedRoute>
               <ProtectedRoute exact path="/planning">
                 <PlanningTool />
+              </ProtectedRoute>
+              <ProtectedRoute exact path="/planningTutorial">
+                <PlanningToolTutorial />
               </ProtectedRoute>
               <ProtectedRoute exact path="/edit">
                 <EditFabric />

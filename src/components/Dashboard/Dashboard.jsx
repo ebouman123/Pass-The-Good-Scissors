@@ -43,7 +43,7 @@ function Dashboard() {
           </ListItem>
           <Divider />
           <ListItem>
-            <ListItemButton>
+            <ListItemButton onClick={() => history.push("/planningTutorial")}>
               <ListItemText primary="Planning Tool Tutorial" />
             </ListItemButton>
           </ListItem>
