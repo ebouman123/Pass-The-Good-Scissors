@@ -70,7 +70,7 @@ export default function DisplayQuilts() {
 
   // Function to delete a quilt
   const deleteQuilt = async (quilt) => {
-    setOpen(false)
+    setOpen(false);
     try {
       // Send a request to delete the quilt from the server
       await axios.delete(
@@ -92,100 +92,102 @@ export default function DisplayQuilts() {
   };
 
   return (
-    <Box sx={{m: 3}}>
-      <UploadQuilt />
-      <Typography variant="h4" sx={{ marginTop: 3, marginBottom: 3 }}>
-        Your Finished Quilts!
-      </Typography>
-      {quiltUrls.length > 0 ? (
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid
-            container
-            spacing={4}
-            direction="row"
-            justify="flex-start"
-            alignItems="flex-start"
-          >
-            {quiltUrls.map((quilt) => {
-              // Extract just the file name from the fabric name
-              const fileName = quilt.quiltName.split("/").pop(); // Get the last part of the path
-              return (
-                <Grid xs={12} sm={6} md={3} key={quilt.quiltName}>
-                  <Card sx={{ width: 385 }}>
-                    <CardMedia
-                      sx={{ height: 385 }}
-                      image={quilt.url}
-                      title={fileName}
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        {fileName}
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                    <Button
-                        variant="outlined"
-                        // Need to pass the quilt to state because of how Dialogs initialize
-                        onClick={() => handleClickOpen(quilt)}
-                        startIcon={<DeleteIcon />}
-                        color="secondary"
-                      >
-                        Delete
-                      </Button>
-                      <Dialog
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="alert-dialog-title"
-                        aria-describedby="alert-dialog-description"
-                      >
-                        <DialogTitle id="alert-dialog-title">
-                          {"Permanently Delete This Quilt?"}
-                        </DialogTitle>
-                        <DialogContent>
-                          <DialogContentText id="alert-dialog-description">
-                            This action cannot be undone.
-                          </DialogContentText>
-                        </DialogContent>
-                        <DialogActions>
-                          <Button
-                            onClick={() => deleteQuilt(quiltToDelete)}
-                            startIcon={<DeleteIcon />}
-                            color="secondary"
-                          >
-                            Delete
-                          </Button>
-                          <Button onClick={handleClose} variant="contained">
-                            Cancel
-                          </Button>
-                        </DialogActions>
-                      </Dialog>
+    <Box sx={{ m: 3, display: "flex" }}>
+      <Box sx={{ marginRight: 20 }}>
+        <UploadQuilt />
+      </Box>
+      <Box>
+        <Typography variant="h4" sx={{ marginBottom: 3 }}>
+          Your Finished Quilts!
+        </Typography>
+        {quiltUrls.length > 0 ? (
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid
+              container
+              spacing={4}
+              direction="row"
+              justify="flex-start"
+              alignItems="flex-start"
+            >
+              {quiltUrls.map((quilt) => {
+                // Extract just the file name from the fabric name
+                const fileName = quilt.quiltName.split("/").pop(); // Get the last part of the path
+                return (
+                  <Grid xs={12} sm={6} md={3} key={quilt.quiltName}>
+                    <Card sx={{ width: 385 }}>
+                      <CardMedia
+                        sx={{ height: 385 }}
+                        image={quilt.url}
+                        title={fileName}
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                          {fileName}
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Button
+                          variant="outlined"
+                          // Need to pass the quilt to state because of how Dialogs initialize
+                          onClick={() => handleClickOpen(quilt)}
+                          startIcon={<DeleteIcon />}
+                          color="secondary"
+                        >
+                          Delete
+                        </Button>
+                        <Dialog
+                          open={open}
+                          onClose={handleClose}
+                          aria-labelledby="alert-dialog-title"
+                          aria-describedby="alert-dialog-description"
+                        >
+                          <DialogTitle id="alert-dialog-title">
+                            {"Permanently Delete This Quilt?"}
+                          </DialogTitle>
+                          <DialogContent>
+                            <DialogContentText id="alert-dialog-description">
+                              This action cannot be undone.
+                            </DialogContentText>
+                          </DialogContent>
+                          <DialogActions>
+                            <Button
+                              onClick={() => deleteQuilt(quiltToDelete)}
+                              startIcon={<DeleteIcon />}
+                              color="secondary"
+                            >
+                              Delete
+                            </Button>
+                            <Button onClick={handleClose} variant="contained">
+                              Cancel
+                            </Button>
+                          </DialogActions>
+                        </Dialog>
 
-
-
-                      {/* <Button
+                        {/* <Button
                         variant="outlined"
                         onClick={() => deleteQuilt(quilt)}
                         startIcon={<DeleteIcon />}
                       >
                         Delete
                       </Button> */}
-                      <Button
-                        variant="contained"
-                        onClick={() => handleEdit(quilt.quiltName)}
-                        startIcon={<EditIcon />}
-                      >
-                        Edit
-                      </Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              );
-            })}
-          </Grid>
-        </Box>
-      ) : (
-        <p>No Quilts Uploaded - Upload Your Next Finished Quilt!</p>
-      )}
+                        <Button
+                          variant="contained"
+                          onClick={() => handleEdit(quilt.quiltName)}
+                          startIcon={<EditIcon />}
+                        >
+                          Edit
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Box>
+        ) : (
+          <p>No Quilts Uploaded - Upload Your Next Finished Quilt!</p>
+        )}
+      </Box>
     </Box>
   );
 }

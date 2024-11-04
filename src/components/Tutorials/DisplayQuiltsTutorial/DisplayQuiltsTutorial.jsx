@@ -66,78 +66,78 @@ export default function DisplayQuiltsTutorial() {
           </Button>
         </ButtonGroup>
       </Box>
-      <Box sx={{ m: 3 }}>
-        <Box sx={{ display: "flex" }}>
-          <Box quilt-tour="step-1">
-            <UploadQuiltTutorial />
-          </Box>
+      <Box sx={{ m: 3, display: "flex" }}>
+        <Box quilt-tour="step-1" sx={{marginRight: 15}}>
+          <UploadQuiltTutorial />
         </Box>
-        <Typography variant="h4" sx={{ marginTop: 3, marginBottom: 3 }}>
-          Your Finished Quilts!
-        </Typography>
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid
-            container
-            spacing={4}
-            direction="row"
-            justify="flex-start"
-            alignItems="flex-start"
-          >
-            <Grid xs={12} sm={6} md={3} key="1">
-              <Card sx={{ width: 385 }} quilt-tour="step-2">
-                <CardMedia
-                  sx={{ height: 385 }}
-                  image="public/assets/Quilt1.jpeg"
-                  title="Star Quilt"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Star Quilt
-                  </Typography>
-                </CardContent>
-                <CardActions quilt-tour="step-3">
-                  <Button
-                    variant="outlined"
-                    // Need to pass the quilt to state because of how Dialogs initialize
-                    startIcon={<DeleteIcon />}
-                    color="secondary"
-                  >
-                    Delete
-                  </Button>
-                  <Button variant="contained" startIcon={<EditIcon />}>
-                    Edit
-                  </Button>
-                </CardActions>
-              </Card>
+        <Box >
+          <Typography variant="h4" sx={{ marginBottom: 3 }}>
+            Your Finished Quilts!
+          </Typography>
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid
+              container
+              spacing={4}
+              direction="row"
+              justify="flex-start"
+              alignItems="flex-start"
+            >
+              <Grid xs={12} sm={6} md={3} key="1">
+                <Card sx={{ width: 385 }} quilt-tour="step-2">
+                  <CardMedia
+                    sx={{ height: 385 }}
+                    image="public/assets/Quilt1.jpeg"
+                    title="Star Quilt"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      Star Quilt
+                    </Typography>
+                  </CardContent>
+                  <CardActions quilt-tour="step-3">
+                    <Button
+                      variant="outlined"
+                      // Need to pass the quilt to state because of how Dialogs initialize
+                      startIcon={<DeleteIcon />}
+                      color="secondary"
+                    >
+                      Delete
+                    </Button>
+                    <Button variant="contained" startIcon={<EditIcon />}>
+                      Edit
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+              <Grid xs={12} sm={6} md={3} key="2">
+                <Card sx={{ width: 385 }}>
+                  <CardMedia
+                    sx={{ height: 385 }}
+                    image="public/assets/Quilt2.jpeg"
+                    title="Diamond Quilt"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      Diamond Quilt
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      variant="outlined"
+                      // Need to pass the quilt to state because of how Dialogs initialize
+                      startIcon={<DeleteIcon />}
+                      color="secondary"
+                    >
+                      Delete
+                    </Button>
+                    <Button variant="contained" startIcon={<EditIcon />}>
+                      Edit
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
             </Grid>
-            <Grid xs={12} sm={6} md={3} key="2">
-              <Card sx={{ width: 385 }}>
-                <CardMedia
-                  sx={{ height: 385 }}
-                  image="public/assets/Quilt2.jpeg"
-                  title="Diamond Quilt"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Diamond Quilt
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    variant="outlined"
-                    // Need to pass the quilt to state because of how Dialogs initialize
-                    startIcon={<DeleteIcon />}
-                    color="secondary"
-                  >
-                    Delete
-                  </Button>
-                  <Button variant="contained" startIcon={<EditIcon />}>
-                    Edit
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          </Grid>
+          </Box>
         </Box>
       </Box>
     </>

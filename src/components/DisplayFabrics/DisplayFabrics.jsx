@@ -92,90 +92,94 @@ export default function DisplayFabrics() {
   };
 
   return (
-    <Box sx={{ m: 3 }}>
-      <UploadFabric />
-      <Typography variant="h4" sx={{ marginTop: 3, marginBottom: 3 }}>
-        Your Saved Fabrics
-      </Typography>
-      {fabricUrls.length > 0 ? (
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid
-            container
-            spacing={4}
-            direction="row"
-            justify="flex-start"
-            alignItems="flex-start"
-          >
-            {fabricUrls.map((fabric) => {
-              // Extract just the file name from the fabric name
-              const fileName = fabric.fabricName.split("/").pop(); // Get the last part of the path
-              return (
-                <Grid xs={12} sm={6} md={3} key={fabric.fabricName}>
-                  <Card sx={{ width: 385 }}>
-                    <CardMedia
-                      sx={{ height: 385 }}
-                      image={fabric.url}
-                      title={fileName}
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        {fileName}
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button
-                        variant="outlined"
-                        // Need to pass the fabric to state because of how Dialogs initialize
-                        onClick={() => handleClickOpen(fabric)}
-                        startIcon={<DeleteIcon />}
-                        color="secondary"
-                      >
-                        Delete
-                      </Button>
-                      <Dialog
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="alert-dialog-title"
-                        aria-describedby="alert-dialog-description"
-                      >
-                        <DialogTitle id="alert-dialog-title">
-                          {"Permanently Delete This Fabric?"}
-                        </DialogTitle>
-                        <DialogContent>
-                          <DialogContentText id="alert-dialog-description">
-                            This action cannot be undone.
-                          </DialogContentText>
-                        </DialogContent>
-                        <DialogActions>
-                          <Button
-                            onClick={() => deleteFabric(fabricToDelete)}
-                            startIcon={<DeleteIcon />}
-                            color="secondary"
-                          >
-                            Delete
-                          </Button>
-                          <Button onClick={handleClose} variant="contained">
-                            Cancel
-                          </Button>
-                        </DialogActions>
-                      </Dialog>
-                      <Button
-                        variant="contained"
-                        onClick={() => handleEdit(fabric.fabricName)}
-                        startIcon={<EditIcon />}
-                      >
-                        Edit
-                      </Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              );
-            })}
-          </Grid>
-        </Box>
-      ) : (
-        <p>No Fabrics Uploaded - Try Uploading One!</p>
-      )}
+    <Box sx={{ m: 3, display: "flex" }}>
+      <Box sx={{ marginRight: 20 }}>
+        <UploadFabric />
+      </Box>
+      <Box>
+        <Typography variant="h4" sx={{ marginBottom: 3 }}>
+          Your Saved Fabrics
+        </Typography>
+        {fabricUrls.length > 0 ? (
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid
+              container
+              spacing={4}
+              direction="row"
+              justify="flex-start"
+              alignItems="flex-start"
+            >
+              {fabricUrls.map((fabric) => {
+                // Extract just the file name from the fabric name
+                const fileName = fabric.fabricName.split("/").pop(); // Get the last part of the path
+                return (
+                  <Grid xs={12} sm={6} md={3} key={fabric.fabricName}>
+                    <Card sx={{ width: 385 }}>
+                      <CardMedia
+                        sx={{ height: 385 }}
+                        image={fabric.url}
+                        title={fileName}
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                          {fileName}
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Button
+                          variant="outlined"
+                          // Need to pass the fabric to state because of how Dialogs initialize
+                          onClick={() => handleClickOpen(fabric)}
+                          startIcon={<DeleteIcon />}
+                          color="secondary"
+                        >
+                          Delete
+                        </Button>
+                        <Dialog
+                          open={open}
+                          onClose={handleClose}
+                          aria-labelledby="alert-dialog-title"
+                          aria-describedby="alert-dialog-description"
+                        >
+                          <DialogTitle id="alert-dialog-title">
+                            {"Permanently Delete This Fabric?"}
+                          </DialogTitle>
+                          <DialogContent>
+                            <DialogContentText id="alert-dialog-description">
+                              This action cannot be undone.
+                            </DialogContentText>
+                          </DialogContent>
+                          <DialogActions>
+                            <Button
+                              onClick={() => deleteFabric(fabricToDelete)}
+                              startIcon={<DeleteIcon />}
+                              color="secondary"
+                            >
+                              Delete
+                            </Button>
+                            <Button onClick={handleClose} variant="contained">
+                              Cancel
+                            </Button>
+                          </DialogActions>
+                        </Dialog>
+                        <Button
+                          variant="contained"
+                          onClick={() => handleEdit(fabric.fabricName)}
+                          startIcon={<EditIcon />}
+                        >
+                          Edit
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Box>
+        ) : (
+          <p>No Fabrics Uploaded - Try Uploading One!</p>
+        )}
+      </Box>
     </Box>
   );
 }

@@ -116,7 +116,7 @@ export default function UploadQuilt() {
     <Box component="form" noValidate autoComplete="off">
       <List sx={{ p: 0 }}>
         <ListItemText>1. Choose your quilt</ListItemText>
-        <ListItem sx={{ paddingLeft: 0 }}>
+        <ListItem sx={{ paddingLeft: 0, width: 250 }}>
           <Button
             component="label"
             sx={{ marginRight: 3 }}

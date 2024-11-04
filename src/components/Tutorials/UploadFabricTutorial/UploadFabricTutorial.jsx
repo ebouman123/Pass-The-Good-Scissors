@@ -25,7 +25,7 @@ export default function UploadFabricTutorial() {
     <Box component="form" noValidate autoComplete="off">
       <List sx={{ p: 0 }}>
         <ListItemText>1. Choose your fabric</ListItemText>
-        <ListItem sx={{ paddingLeft: 0 }}>
+        <ListItem sx={{ paddingLeft: 0, width: 250 }}>
           <Button
             component="label"
             sx={{ marginRight: 3 }}
@@ -52,7 +52,9 @@ export default function UploadFabricTutorial() {
         </ListItem>
         <ListItemText>3. Upload your fabric!</ListItemText>
         <ListItem sx={{ paddingLeft: 0 }}>
-          <Button variant="contained">Upload</Button>
+          <Button variant="contained" >
+            Upload
+          </Button>
         </ListItem>
       </List>
     </Box>
