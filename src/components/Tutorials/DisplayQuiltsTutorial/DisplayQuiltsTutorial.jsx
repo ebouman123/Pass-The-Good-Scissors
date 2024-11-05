@@ -86,7 +86,7 @@ export default function DisplayQuiltsTutorial() {
                 <Card sx={{ width: 385 }} quilt-tour="step-2">
                   <CardMedia
                     sx={{ height: 385 }}
-                    image="public/assets/Quilt1.jpeg"
+                    image="/assets/Quilt1.jpeg"
                     title="Star Quilt"
                   />
                   <CardContent>
@@ -113,7 +113,7 @@ export default function DisplayQuiltsTutorial() {
                 <Card sx={{ width: 385 }}>
                   <CardMedia
                     sx={{ height: 385 }}
-                    image="public/assets/Quilt2.jpeg"
+                    image="/assets/Quilt2.jpeg"
                     title="Diamond Quilt"
                   />
                   <CardContent>

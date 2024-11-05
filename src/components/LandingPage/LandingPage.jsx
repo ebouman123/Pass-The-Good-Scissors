@@ -37,7 +37,7 @@ function LandingPage() {
               dynamic grid to see how they work together
             </Typography>
           </Typography>
-          <img src="public/assets/Manage Fabrics.png" height="800" />
+          <img src="/assets/Manage Fabrics.png" height="800" />
         </Box>
         <Box sx={{ border: 3 }}>
           <Typography variant="h6">
@@ -47,7 +47,7 @@ function LandingPage() {
               perfect quilt design before you start cutting
             </Typography>
           </Typography>
-          <img src="public/assets/Planning Tool.png" height="800" />
+          <img src="/assets/Planning Tool.png" height="800" />
         </Box>
         <Box sx={{ border: 3 }}>
           <Typography variant="h6">
@@ -57,7 +57,7 @@ function LandingPage() {
               design to guide your project
             </Typography>
           </Typography>
-          <img src="public/assets/Example Export.png" height="800" />
+          <img src="/assets/Example Export.png" height="800" />
         </Box>
       </Box>
     </Box>

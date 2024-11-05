@@ -31,12 +31,6 @@ function Dashboard() {
           component="nav"
         >
           <ListItem>
-            <ListItemButton onClick={() => history.push("/quiltsTutorial")}>
-              <ListItemText primary="Finished Quilts Tutorial" />
-            </ListItemButton>
-          </ListItem>
-          <Divider />
-          <ListItem>
             <ListItemButton onClick={() => history.push("/fabricsTutorial")}>
               <ListItemText primary="Manage Fabrics Tutorial" />
             </ListItemButton>
@@ -45,6 +39,12 @@ function Dashboard() {
           <ListItem>
             <ListItemButton onClick={() => history.push("/planningTutorial")}>
               <ListItemText primary="Planning Tool Tutorial" />
+            </ListItemButton>
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemButton onClick={() => history.push("/quiltsTutorial")}>
+              <ListItemText primary="Finished Quilts Tutorial" />
             </ListItemButton>
           </ListItem>
         </List>

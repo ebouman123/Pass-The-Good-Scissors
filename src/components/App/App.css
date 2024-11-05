@@ -95,7 +95,7 @@ Alert
 Form Treatment
 -------------------------------------------------------------------------------- */
 
-.formPanel {
+/* .formPanel {
   box-sizing: border-box;
   width: 400px;
   max-width: 100%;
@@ -109,4 +109,4 @@ Form Treatment
 input {
   margin: 5px;
   margin-bottom: 10px;
-}
+} */

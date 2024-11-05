@@ -105,7 +105,7 @@ export default function PlanningToolTutorial() {
                 >
                   <CardMedia
                     sx={{ height: 150 }}
-                    image="public/assets/Fabric1.png"
+                    image="/assets/Fabric1.png"
                   />
                   <CardContent sx={{ maxHeight: 50 }}>
                     <Typography
@@ -128,7 +128,7 @@ export default function PlanningToolTutorial() {
                 >
                   <CardMedia
                     sx={{ height: 150 }}
-                    image="public/assets/Fabric2.png"
+                    image="/assets/Fabric2.png"
                   />
                   <CardContent sx={{ maxHeight: 50 }}>
                     <Typography
@@ -151,7 +151,7 @@ export default function PlanningToolTutorial() {
                 >
                   <CardMedia
                     sx={{ height: 150 }}
-                    image="public/assets/Fabric5.png"
+                    image="/assets/Fabric5.png"
                   />
                   <CardContent sx={{ maxHeight: 50 }}>
                     <Typography

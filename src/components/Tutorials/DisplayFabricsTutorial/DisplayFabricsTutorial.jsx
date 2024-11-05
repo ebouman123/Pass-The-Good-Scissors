@@ -86,7 +86,7 @@ export default function DisplayFabricsTutorial() {
                 <Card sx={{ width: 385 }} fabric-tour="step-2">
                   <CardMedia
                     sx={{ height: 385 }}
-                    image="public/assets/Fabric1.png"
+                    image="/assets/Fabric1.png"
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
@@ -112,7 +112,7 @@ export default function DisplayFabricsTutorial() {
                 <Card sx={{ width: 385 }}>
                   <CardMedia
                     sx={{ height: 385 }}
-                    image="public/assets/Fabric2.png"
+                    image="/assets/Fabric2.png"
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
@@ -138,7 +138,7 @@ export default function DisplayFabricsTutorial() {
                 <Card sx={{ width: 385 }}>
                   <CardMedia
                     sx={{ height: 385 }}
-                    image="public/assets/Fabric5.png"
+                    image="/assets/Fabric5.png"
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
