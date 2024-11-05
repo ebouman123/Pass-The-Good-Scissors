@@ -6,12 +6,10 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid2";
 import { Typography } from "@mui/material";
-
 
 export default function PlanningTool() {
   const dispatch = useDispatch();
@@ -183,105 +181,138 @@ export default function PlanningTool() {
   };
 
   return (
-    <Box sx={{ marginLeft: 3, height: '100vh' }}>
-      <Typography variant="h4">Plan Your Quilt!</Typography>
+    <Box
+      sx={{ paddingLeft: 6, paddingRight: 6, paddingTop: 5, height: "100vh" }}
+    >
       <Box sx={{ display: "flex" }}>
         <Box
           sx={{
-            width: "600px",
-            borderRight: "1px solid #ccc",
-            padding: "10px",
-          }}
+            width: 476,
+            border: 1,
+            borderRadius: 2
+         }}
         >
-          <Typography variant="h5">Select a Fabric</Typography>
+          <Box sx={{ p: 3, borderBottom: 1 }}>
+            <Typography variant="h5">Select a Fabric</Typography>
+          </Box>
           {/* Display fabric options for selection in a grid */}
-          {fabricUrls.length > 0 ? 
-          <Grid
-            container
-            spacing={4}
-            direction="row"
-            justify="flex-start"
-            alignItems="flex-start"
-            sx={{ overflow: "auto", maxHeight: 800 }}
-          >
-            {fabricUrls.map((fabric) => {
-              // Extract just the file name from the fabric name
-              const fileName = fabric.fabricName.split("/").pop(); // Get the last part of the path
+          {fabricUrls.length > 0 ? (
+            <Grid
+              container
+              spacing={3}
+              direction="row"
+              justify="flex-start"
+              alignItems="flex-start"
+              sx={{
+                overflow: "auto",
+                maxHeight: 500,
+                paddingLeft: 3,
+                paddingTop: 3,
+              }}
+            >
+              {fabricUrls.map((fabric) => {
+                // Extract just the file name from the fabric name
+                const fileName = fabric.fabricName.split("/").pop(); // Get the last part of the path
 
-              return (
-                <Grid key={fabric.url}>
-                  <Card
-                    sx={{
-                      width: 200,
-                      height: 200,
-                      "&:hover": { cursor: "pointer" },
-                      border:
-                        selectedFabric === fabric.url
-                          ? "1px solid blue"
-                          : "none",
-                    }}
-                    onClick={() => handleFabricClick(fabric.url, fileName)} // Pass alt text as well
-                  >
-                    <CardMedia
-                      sx={{ height: 150 }}
-                      image={fabric.url}
-                      title={fileName}
-                      alt={fileName}
-                    />
-                    <CardContent sx={{ maxHeight: 50 }}>
-                      <Typography
-                        noWrap={true}
-                        gutterBottom
-                        variant="body"
-                        component="div"
-                      >
-                        {fileName}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              );
-            })}
-          </Grid>
-          : <Box><Typography>Add some fabrics, idiot</Typography></Box>}
+                return (
+                  <Grid key={fabric.url}>
+                    <Card
+                      sx={{
+                        marginBottom: 1,
+                        width: 200,
+                        height: 200,
+                        "&:hover": { cursor: "pointer" },
+                        boxShadow: 0,
+                        border:
+                          selectedFabric === fabric.url
+                            ? "1px solid blue"
+                            : "1px solid black",
+                      }}
+                      onClick={() => handleFabricClick(fabric.url, fileName)} // Pass alt text as well
+                    >
+                      <CardMedia
+                        sx={{ height: 150 }}
+                        image={fabric.url}
+                        title={fileName}
+                        alt={fileName}
+                      />
+                      <CardContent sx={{ maxHeight: 50 }}>
+                        <Typography
+                          noWrap={true}
+                          gutterBottom
+                          variant="body"
+                          component="div"
+                        >
+                          {fileName}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          ) : (
+            <Box>
+              <Typography>Add some fabrics, idiot</Typography>
+            </Box>
+          )}
 
           {/* Input fields to choose number of rows and columns */}
-          <div style={{ marginTop: "20px" }}>
-            <label>
-              Rows:
-              <input
-                type="number"
-                value={rows}
-                onChange={(e) => setRows(Number(e.target.value))} // Update rows state
-                min="1"
-              />
-            </label>
-            <label style={{ marginLeft: "10px" }}>
-              Columns:
-              <input
-                type="number"
-                value={cols}
-                onChange={(e) => setCols(Number(e.target.value))} // Update columns state
-                min="1"
-              />
-            </label>
-          </div>
-          <Button onClick={resetSquares} variant="outlined" style={{ marginTop: "10px" }}>
-            Reset All Squares
-          </Button>
-          <Button
-            onClick={() => setIsNextSquareWhite(true)} // Set toggle for next square to white
-            style={{ marginTop: "10px" }}
-            variant="outlined"
+          <Box
+            sx={{
+              p: 3,
+              display: "flex",
+              justifyContent: "space-between",
+              borderTop: 1,
+            }}
           >
-            Clear Individual Squares
-          </Button>
-          <Button onClick={exportToImage} variant="contained" style={{ marginTop: "10px" }}>
-            Export as Image
-          </Button>
+            <TextField
+              type="number"
+              label="Rows"
+              value={rows}
+              onChange={(e) => setRows(Number(e.target.value))} // Update rows state
+              min="1"
+            />
+            <TextField
+              type="number"
+              label="Columns"
+              value={cols}
+              onChange={(e) => setCols(Number(e.target.value))} // Update columns state
+              min="1"
+            />
+          </Box>
+          <Box
+            sx={{
+              paddingLeft: 3,
+              paddingRight: 3,
+              display: "flex",
+              justifyContent: "space-evenly",
+            }}
+          >
+            <Button onClick={resetSquares} variant="outlined">
+              Reset All Squares
+            </Button>
+            <Button
+              onClick={() => setIsNextSquareWhite(true)} // Set toggle for next square to white
+              variant="outlined"
+            >
+              Clear Individual Squares
+            </Button>
+          </Box>
+          <Box
+            sx={{
+              p: 3,
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <Button onClick={exportToImage} variant="contained">
+              Export as Image
+            </Button>
+          </Box>
         </Box>
 
-        <div style={{ flexGrow: 1, padding: "10px" }}>
+        <Box sx={{ flexGrow: 1, paddingLeft: 30 }}>
           <div
             style={{
               display: "grid",
@@ -302,7 +333,7 @@ export default function PlanningTool() {
             ))}
           </div>
           <canvas ref={canvasRef} style={{ display: "none" }} />
-        </div>
+        </Box>
       </Box>
     </Box>
   );

@@ -22,10 +22,9 @@ function Dashboard() {
   return (
     <Box
       sx={{
-        p: 0,
-        marginLeft: 6,
-        marginRight: 6,
-        marginTop: 5,
+        paddingLeft: 6,
+        paddingRight: 6,
+        paddingTop: 5,
         display: "flex",
         justifyContent: "space-between",
         height: "100vh",

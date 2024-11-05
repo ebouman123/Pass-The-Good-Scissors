@@ -36,7 +36,15 @@ function LoginForm() {
   }; // end login
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "center", marginTop: 5, height: '100vh' }}>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        paddingTop: 5,
+        height: "100vh",
+        backgroundColor: "#fafafa",
+      }}
+    >
       <Card
         sx={{
           display: "flex",
@@ -46,7 +54,6 @@ function LoginForm() {
           height: "80vh",
           alignItems: "center",
           border: 1,
-          backgroundColor: '#fafafa'
         }}
       >
         <CardContent>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import { Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
@@ -31,7 +31,15 @@ function RegisterForm() {
   }; // end registerUser
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "center", marginTop: 5, height: '100vh'  }}>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        paddingTop: 5,
+        height: "100vh",
+        backgroundColor: "#fafafa",
+      }}
+    >
       <Card
         sx={{
           display: "flex",
@@ -41,7 +49,6 @@ function RegisterForm() {
           height: "80vh",
           alignItems: "center",
           border: 1,
-          backgroundColor: '#fafafa'
         }}
       >
         <CardContent>
