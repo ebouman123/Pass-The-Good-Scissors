@@ -9,13 +9,8 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import FormControl from '@mui/material/FormControl';
-import InputAdornment from '@mui/material/InputAdornment';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-
-
-
-
+import InputAdornment from "@mui/material/InputAdornment";
+import AccountCircle from "@mui/icons-material/AccountCircle";
 
 function LoginForm() {
   const [username, setUsername] = useState("");
@@ -23,7 +18,6 @@ function LoginForm() {
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
   const history = useHistory();
-
 
   const login = (event) => {
     event.preventDefault();
@@ -48,15 +42,19 @@ function LoginForm() {
           display: "flex",
           justifyContent: "space-between",
           flexDirection: "row",
-          width: 7/10,
+          width: 7 / 10,
           height: "80vh",
           alignItems: "center",
           border: 1,
+          backgroundColor: '#fafafa'
         }}
       >
         <CardContent>
-          <Box sx={{display: 'flex', justifyContent: 'center', width: '30vh'}}>
-            <FormControl
+          <Box
+            sx={{ display: "flex", justifyContent: "center", width: "30vh" }}
+          >
+            <Box
+              component="form"
               sx={{ display: "flex", flexDirection: "column" }}
               onSubmit={login}
             >
@@ -67,37 +65,37 @@ function LoginForm() {
                 </h3>
               )}
               <Box sx={{ marginTop: 6 }}>
-                  <TextField
-                    type="text"
-                    name="username"
-                    label="Username"
-                    variant="outlined"
-                    required
-                    fullWidth
-                    value={username}
-                    onChange={(event) => setUsername(event.target.value)}
-                    sx={{width: 266}}
-                    slotProps={{
-                      input: {
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <AccountCircle />
-                          </InputAdornment>
-                        ),
-                      },
-                    }}
-                  />
+                <TextField
+                  type="text"
+                  name="username"
+                  label="Username"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  value={username}
+                  onChange={(event) => setUsername(event.target.value)}
+                  sx={{ width: 266 }}
+                  slotProps={{
+                    input: {
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <AccountCircle />
+                        </InputAdornment>
+                      ),
+                    },
+                  }}
+                />
               </Box>
               <Box sx={{ marginTop: 2, marginBottom: 2 }}>
-                  <TextField
-                    type="password"
-                    name="password"
-                    label="Password"
-                    required
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                    sx={{width: 266}}
-                  />
+                <TextField
+                  type="password"
+                  name="password"
+                  label="Password"
+                  required
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  sx={{ width: 266 }}
+                />
               </Box>
               <Box sx={{ marginBottom: 2 }}>
                 <Button variant="contained" type="submit">
@@ -116,13 +114,13 @@ function LoginForm() {
                   Sign Up Here!
                 </Button>
               </Box>
-            </FormControl>
+            </Box>
           </Box>
         </CardContent>
         <CardMedia
           sx={{ height: "80vh", width: "75vh" }}
-          image="/assets/Gordon.jpeg"
-          title="Gerby"
+          image="/assets/Fabric-Login.jpg"
+          title="Stock Image of a Quilt"
         />
       </Card>
     </Box>
