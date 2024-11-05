@@ -5,6 +5,7 @@ export default function Square({ size, fabricUrl, onClick }) {
       height={size}
       xmlns="http://www.w3.org/2000/svg"
       onClick={onClick}
+      cursor= 'pointer'
     >
       {/* Conditionally render a white square or a square with an image if an image is provided */}
       <g>

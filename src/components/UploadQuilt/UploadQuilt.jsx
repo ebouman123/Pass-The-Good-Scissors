@@ -125,7 +125,7 @@ export default function UploadQuilt() {
             tabIndex={-1}
             startIcon={<CloudUploadIcon />}
           >
-            Upload a Quilt
+            Select an Image
             <VisuallyHiddenInput type="file" onChange={handleFileChange} />
           </Button>
           {file && <p>File Chosen: {file.name}</p>}

@@ -47,7 +47,7 @@ export default function DisplayQuiltsTutorial() {
 
   return (
     <>
-      <Box sx={{ justifyContent: "center", display: "flex" }}>
+      <Box sx={{ justifyContent: "center", display: "flex", marginTop: 5 }}>
         <ButtonGroup>
           <Button
             sx={{ border: 1, borderColor: "black" }}
@@ -66,7 +66,7 @@ export default function DisplayQuiltsTutorial() {
           </Button>
         </ButtonGroup>
       </Box>
-      <Box sx={{ m: 3, display: "flex" }}>
+      <Box sx={{ marginLeft: 6, marginTop: 5, display: "flex"  }}>
         <Box quilt-tour="step-1" sx={{marginRight: 15}}>
           <UploadQuiltTutorial />
         </Box>
@@ -83,7 +83,7 @@ export default function DisplayQuiltsTutorial() {
               alignItems="flex-start"
             >
               <Grid xs={12} sm={6} md={3} key="1">
-                <Card sx={{ width: 385 }} quilt-tour="step-2">
+                <Card sx={{ width: 385, borderRadius: 3 }} quilt-tour="step-2">
                   <CardMedia
                     sx={{ height: 385 }}
                     image="/assets/Quilt1.jpeg"
@@ -110,7 +110,7 @@ export default function DisplayQuiltsTutorial() {
                 </Card>
               </Grid>
               <Grid xs={12} sm={6} md={3} key="2">
-                <Card sx={{ width: 385 }}>
+                <Card sx={{ width: 385, borderRadius: 3 }}>
                   <CardMedia
                     sx={{ height: 385 }}
                     image="/assets/Quilt2.jpeg"

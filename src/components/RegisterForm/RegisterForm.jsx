@@ -31,7 +31,7 @@ function RegisterForm() {
   }; // end registerUser
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "center" }}>
+    <Box sx={{ display: "flex", justifyContent: "center", marginTop: 5, height: '100vh'  }}>
       <Card
         sx={{
           display: "flex",
@@ -115,7 +115,7 @@ function RegisterForm() {
         <CardMedia
           sx={{ height: "80vh", width: "75vh" }}
           image="/assets/Fabric-Login.jpg"
-          title="Stock Image of a Quilt"
+          alt="Image of a Quilt"
         />
       </Card>
     </Box>

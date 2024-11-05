@@ -33,7 +33,7 @@ export default function UploadFabricTutorial() {
             tabIndex={-1}
             startIcon={<CloudUploadIcon />}
           >
-            Upload a Fabric
+            Select an Image
             <VisuallyHiddenInput />
           </Button>
         </ListItem>

@@ -92,13 +92,13 @@ export default function DisplayQuilts() {
   };
 
   return (
-    <Box sx={{ m: 3, display: "flex" }}>
+    <Box sx={{ marginLeft: 6, marginTop: 5, display: "flex", height: '100vh' }}>
       <Box sx={{ marginRight: 20 }}>
         <UploadQuilt />
       </Box>
       <Box>
         <Typography variant="h4" sx={{ marginBottom: 3 }}>
-          Your Finished Quilts!
+          Your Finished Quilts
         </Typography>
         {quiltUrls.length > 0 ? (
           <Box sx={{ flexGrow: 1 }}>
@@ -114,7 +114,7 @@ export default function DisplayQuilts() {
                 const fileName = quilt.quiltName.split("/").pop(); // Get the last part of the path
                 return (
                   <Grid xs={12} sm={6} md={3} key={quilt.quiltName}>
-                    <Card sx={{ width: 385 }}>
+                    <Card sx={{ width: 385, borderRadius: 3 }}>
                       <CardMedia
                         sx={{ height: 385 }}
                         image={quilt.url}

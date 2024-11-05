@@ -47,7 +47,7 @@ export default function DisplayFabricsTutorial() {
 
   return (
     <>
-      <Box sx={{ justifyContent: "center", display: "flex" }}>
+      <Box sx={{ justifyContent: "center", display: "flex", marginTop: 5 }}>
         <ButtonGroup>
           <Button
             sx={{ border: 1, borderColor: "black" }}
@@ -66,7 +66,7 @@ export default function DisplayFabricsTutorial() {
           </Button>
         </ButtonGroup>
       </Box>
-      <Box sx={{ m: 3, display: "flex" }}>
+      <Box sx={{ marginLeft: 6, marginTop: 5, display: "flex"  }}>
         <Box fabric-tour="step-1" sx={{marginRight: 20}}>
           <UploadFabricTutorial />
         </Box>
@@ -83,7 +83,7 @@ export default function DisplayFabricsTutorial() {
               alignItems="flex-start"
             >
               <Grid xs={12} sm={6} md={3} key="1">
-                <Card sx={{ width: 385 }} fabric-tour="step-2">
+                <Card sx={{ width: 385, borderRadius: 3 }} fabric-tour="step-2">
                   <CardMedia
                     sx={{ height: 385 }}
                     image="/assets/Fabric1.png"
@@ -109,7 +109,7 @@ export default function DisplayFabricsTutorial() {
                 </Card>
               </Grid>
               <Grid xs={12} sm={6} md={3} key="2">
-                <Card sx={{ width: 385 }}>
+                <Card sx={{ width: 385, borderRadius: 3 }}>
                   <CardMedia
                     sx={{ height: 385 }}
                     image="/assets/Fabric2.png"
@@ -135,7 +135,7 @@ export default function DisplayFabricsTutorial() {
                 </Card>
               </Grid>
               <Grid xs={12} sm={6} md={3} key="3">
-                <Card sx={{ width: 385 }}>
+                <Card sx={{ width: 385, borderRadius: 3 }}>
                   <CardMedia
                     sx={{ height: 385 }}
                     image="/assets/Fabric5.png"

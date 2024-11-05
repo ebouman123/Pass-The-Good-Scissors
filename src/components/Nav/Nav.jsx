@@ -13,7 +13,7 @@ function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
-    <Box sx={{ flexGrow: 1, marginBottom: 4 }}>
+    <Box sx={{ flexGrow: 1 }}>
       <AppBar position="relative" sx={{ height: 80 }}>
         <Toolbar sx={{ height: 80 }}>
           <Link

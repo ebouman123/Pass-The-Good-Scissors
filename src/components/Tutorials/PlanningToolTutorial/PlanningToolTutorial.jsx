@@ -57,7 +57,7 @@ export default function PlanningToolTutorial() {
 
   return (
     <>
-      <Box sx={{ justifyContent: "center", display: "flex" }}>
+      <Box sx={{ justifyContent: "center", display: "flex", marginTop: 5 }}>
         <ButtonGroup>
           <Button
             sx={{ border: 1, borderColor: "black" }}

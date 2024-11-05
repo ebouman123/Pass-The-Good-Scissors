@@ -92,7 +92,7 @@ export default function DisplayFabrics() {
   };
 
   return (
-    <Box sx={{ m: 3, display: "flex" }}>
+    <Box sx={{ marginLeft: 6, marginTop: 5, display: "flex", height: '100vh' }}>
       <Box sx={{ marginRight: 20 }}>
         <UploadFabric />
       </Box>
@@ -114,7 +114,7 @@ export default function DisplayFabrics() {
                 const fileName = fabric.fabricName.split("/").pop(); // Get the last part of the path
                 return (
                   <Grid xs={12} sm={6} md={3} key={fabric.fabricName}>
-                    <Card sx={{ width: 385 }}>
+                    <Card sx={{ width: 385, borderRadius: 3 }}>
                       <CardMedia
                         sx={{ height: 385 }}
                         image={fabric.url}

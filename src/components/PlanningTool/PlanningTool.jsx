@@ -183,7 +183,7 @@ export default function PlanningTool() {
   };
 
   return (
-    <Box sx={{ marginLeft: 3 }}>
+    <Box sx={{ marginLeft: 3, height: '100vh' }}>
       <Typography variant="h4">Plan Your Quilt!</Typography>
       <Box sx={{ display: "flex" }}>
         <Box
@@ -214,9 +214,10 @@ export default function PlanningTool() {
                     sx={{
                       width: 200,
                       height: 200,
+                      "&:hover": { cursor: "pointer" },
                       border:
                         selectedFabric === fabric.url
-                          ? "2px solid blue"
+                          ? "1px solid blue"
                           : "none",
                     }}
                     onClick={() => handleFabricClick(fabric.url, fileName)} // Pass alt text as well

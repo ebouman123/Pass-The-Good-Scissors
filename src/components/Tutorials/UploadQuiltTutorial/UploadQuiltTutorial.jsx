@@ -33,7 +33,7 @@ export default function UploadQuiltTutorial() {
             tabIndex={-1}
             startIcon={<CloudUploadIcon />}
           >
-            Upload a Quilt
+            Select an Image
             <VisuallyHiddenInput />
           </Button>
         </ListItem>
