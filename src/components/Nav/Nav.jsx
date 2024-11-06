@@ -8,113 +8,124 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 function Nav() {
   const user = useSelector((store) => store.user);
+  const location = useLocation();
+
+  const hideNavOnPages = ["/landing", "/login", "/registration", "/about"];
+  const showNav = !hideNavOnPages.includes(location.pathname);
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="relative" sx={{ height: 80 }}>
-        <Toolbar sx={{ height: 80 }}>
-          <Link
-            component={RouterLink}
-            color="#fafafa"
-            sx={{ textDecoration: "none" }}
-            to="/landing"
-          >
-            <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-              Pass The Good Scissors!
-            </Typography>
-          </Link>
-          <Box flexGrow={1} />
-          {/* If no user is logged in, show these links */}
-          {!user.id && (
-            // If there's no user, show login/registration links
-            <>
-              <Stack
-                direction={{ sm: "row" }}
-                sx={{ justifyContent: "center", alignItems: "center" }}
-                gap={3}
+    <Box>
+      {showNav ? (
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar position="relative" sx={{ height: 80 }}>
+            <Toolbar sx={{ height: 80 }}>
+              <Link
+                component={RouterLink}
+                color="#fafafa"
+                sx={{ textDecoration: "none" }}
+                to="/landing"
               >
-                <Link
-                  component={RouterLink}
-                  sx={{ textDecoration: "none" }}
-                  color="#fafafa"
-                  to="/login"
-                >
-                  Login / Register
-                </Link>
-                <Link
-                  component={RouterLink}
-                  sx={{ textDecoration: "none" }}
-                  color="#fafafa"
-                  to="/about"
-                >
-                  About
-                </Link>
-              </Stack>
-            </>
-          )}
+                <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+                  Pass The Good Scissors!
+                </Typography>
+              </Link>
+              <Box flexGrow={1} />
+              {/* If no user is logged in, show these links */}
+              {!user.id && (
+                // If there's no user, show login/registration links
+                <>
+                  <Stack
+                    direction={{ sm: "row" }}
+                    sx={{ justifyContent: "center", alignItems: "center" }}
+                    gap={3}
+                  >
+                    <Link
+                      component={RouterLink}
+                      sx={{ textDecoration: "none" }}
+                      color="#fafafa"
+                      to="/login"
+                    >
+                      Login / Register
+                    </Link>
+                    <Link
+                      component={RouterLink}
+                      sx={{ textDecoration: "none" }}
+                      color="#fafafa"
+                      to="/about"
+                    >
+                      About
+                    </Link>
+                  </Stack>
+                </>
+              )}
 
-          {/* If a user is logged in, show these links */}
-          {user.id && (
-            <>
-              <Stack
-                direction={{ sm: "row" }}
-                sx={{ justifyContent: "center", alignItems: "center" }}
-                gap={3}
-              >
-                <Link
-                  component={RouterLink}
-                  sx={{ textDecoration: "none" }}
-                  color="#fafafa"
-                  to="/dashboard"
-                >
-                  Dashboard
-                </Link>
+              {/* If a user is logged in, show these links */}
+              {user.id && (
+                <>
+                  <Stack
+                    direction={{ sm: "row" }}
+                    sx={{ justifyContent: "center", alignItems: "center" }}
+                    gap={3}
+                  >
+                    <Link
+                      component={RouterLink}
+                      sx={{ textDecoration: "none" }}
+                      color="#fafafa"
+                      to="/dashboard"
+                    >
+                      Dashboard
+                    </Link>
 
-                <Link
-                  component={RouterLink}
-                  sx={{ textDecoration: "none" }}
-                  color="#fafafa"
-                  to="/quilts"
-                >
-                  Finished Quilts
-                </Link>
+                    <Link
+                      component={RouterLink}
+                      sx={{ textDecoration: "none" }}
+                      color="#fafafa"
+                      to="/quilts"
+                    >
+                      Finished Quilts
+                    </Link>
 
-                <Link
-                  component={RouterLink}
-                  sx={{ textDecoration: "none" }}
-                  color="#fafafa"
-                  to="/fabrics"
-                >
-                  Manage Fabrics
-                </Link>
+                    <Link
+                      component={RouterLink}
+                      sx={{ textDecoration: "none" }}
+                      color="#fafafa"
+                      to="/fabrics"
+                    >
+                      Manage Fabrics
+                    </Link>
 
-                <Link
-                  component={RouterLink}
-                  sx={{ textDecoration: "none" }}
-                  color="#fafafa"
-                  to="/planning"
-                >
-                  Planning Tool
-                </Link>
+                    <Link
+                      component={RouterLink}
+                      sx={{ textDecoration: "none" }}
+                      color="#fafafa"
+                      to="/planning"
+                    >
+                      Planning Tool
+                    </Link>
 
-                <Link
-                  component={RouterLink}
-                  sx={{ textDecoration: "none" }}
-                  color="#fafafa"
-                  to="/about"
-                >
-                  About
-                </Link>
+                    <Link
+                      component={RouterLink}
+                      sx={{ textDecoration: "none" }}
+                      color="#fafafa"
+                      to="/about"
+                    >
+                      About
+                    </Link>
 
-                <LogOutButton className="navLink" />
-              </Stack>
-            </>
-          )}
-        </Toolbar>
-      </AppBar>
+                    <LogOutButton />
+                  </Stack>
+                </>
+              )}
+            </Toolbar>
+          </AppBar>
+        </Box>
+      ) : (
+        <Box></Box>
+      )}
     </Box>
   );
 }

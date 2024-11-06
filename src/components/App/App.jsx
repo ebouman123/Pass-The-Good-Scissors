@@ -11,7 +11,6 @@ import { TourProvider } from "@reactour/tour";
 import steps from "../../steps";
 
 import Nav from "../Nav/Nav";
-import Footer from "../Footer/Footer";
 
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
@@ -50,8 +49,8 @@ function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: "#4447a3",
-        light: "#a2a7d6",
+        main: "#645fbf",
+        light: "#ced0ec",
         contrastText: "#fff",
       },
       secondary: {
@@ -61,7 +60,7 @@ function App() {
       },
     },
     typography: {
-      fontFamily: "Roboto, sans-serif",
+      fontFamily: "Lato, Roboto, sans-serif"
     },
   });
 
@@ -74,7 +73,6 @@ function App() {
             <Switch>
               {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
               <Redirect exact from="/" to="/landing" />
-
               {/* Visiting localhost:5173/about will show the about page. */}
               <Route
                 // shows AboutPage at all times (logged in or not)
@@ -84,10 +82,7 @@ function App() {
                 <AboutPage />
               </Route>
 
-              <ProtectedRoute
-                exact
-                path="/dashboard"
-              >
+              <ProtectedRoute exact path="/dashboard">
                 <Dashboard />
               </ProtectedRoute>
 

@@ -11,6 +11,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import InputAdornment from "@mui/material/InputAdornment";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 function LoginForm() {
   const [username, setUsername] = useState("");
@@ -56,9 +57,24 @@ function LoginForm() {
           border: 1,
         }}
       >
-        <CardContent>
+        <CardContent
+          sx={{
+            height: "70vh",
+            paddingLeft: 10,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-evenly",
+          }}
+        >
+          <ArrowBackIcon
+            sx={{ cursor: "pointer" }}
+            onClick={() => history.push("/landing")}
+          />
           <Box
-            sx={{ display: "flex", justifyContent: "center", width: "30vh" }}
+            sx={{
+              display: "flex",
+              width: "30vh",
+            }}
           >
             <Box
               component="form"
@@ -81,7 +97,7 @@ function LoginForm() {
                   fullWidth
                   value={username}
                   onChange={(event) => setUsername(event.target.value)}
-                  sx={{ width: 266 }}
+                  sx={{ width: 350 }}
                   slotProps={{
                     input: {
                       startAdornment: (
@@ -101,11 +117,11 @@ function LoginForm() {
                   required
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
-                  sx={{ width: 266 }}
+                  sx={{ width: 350 }}
                 />
               </Box>
               <Box sx={{ marginBottom: 2 }}>
-                <Button variant="contained" type="submit">
+                <Button variant="contained" type="submit" sx={{width: 350}}>
                   Log In
                 </Button>
               </Box>
@@ -113,7 +129,6 @@ function LoginForm() {
                 <Button
                   type="button"
                   variant="text"
-                  className="btn btn_asLink"
                   onClick={() => {
                     history.push("/registration");
                   }}
