@@ -188,13 +188,12 @@ export default function PlanningTool() {
         <Box
           sx={{
             width: 476,
+            height: 840,
             border: 1,
-            borderRadius: 2
+            borderRadius: 2,
+            overflow: 'hidden'
          }}
         >
-          <Box sx={{ p: 3, borderBottom: 1 }}>
-            <Typography variant="h5">Select a Fabric</Typography>
-          </Box>
           {/* Display fabric options for selection in a grid */}
           {fabricUrls.length > 0 ? (
             <Grid
@@ -205,7 +204,8 @@ export default function PlanningTool() {
               alignItems="flex-start"
               sx={{
                 overflow: "auto",
-                maxHeight: 500,
+                maxHeight: 600,
+                backgroundColor: '#fafafa',
                 paddingLeft: 3,
                 paddingTop: 3,
               }}
@@ -225,8 +225,8 @@ export default function PlanningTool() {
                         boxShadow: 0,
                         border:
                           selectedFabric === fabric.url
-                            ? "1px solid blue"
-                            : "1px solid black",
+                            ? "2px solid blue"
+                            : "2px solid #dedede",
                       }}
                       onClick={() => handleFabricClick(fabric.url, fileName)} // Pass alt text as well
                     >
