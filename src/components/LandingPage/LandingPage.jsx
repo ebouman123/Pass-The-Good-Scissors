@@ -45,27 +45,28 @@ function LandingPage() {
         </Typography>
         <Typography
           variant="h4"
-          sx={{ paddingTop: 10, paddingBottom: 10, textAlign: "center" }}
+          sx={{ paddingTop: 10, paddingBottom: 17, textAlign: "center" }}
         >
           With Pass the Good Scissors, planning your next quilt has never been
           easier.
         </Typography>
-        <Box
-          component="button"
+        <Button
           onClick={() => history.push("/login")}
+          variant="contained"
           sx={{
-            cursor: "pointer",
             width: 330,
-            height: 85,
-            justifyContent: "center",
+            height: 82,
             border: 0,
+            boxShadow: 0,
+            borderRadius: 0,
             backgroundColor: "#bf7296",
+            textTransform: "unset",
           }}
         >
-          <Typography variant="subtitle1" color="#ffffff">
+          <Typography variant="h6" color="#ffffff">
             Log in or Register to get started
           </Typography>
-        </Box>
+        </Button>
       </Box>
       <Box
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
@@ -75,12 +76,14 @@ function LandingPage() {
             width: 1 / 3,
             m: 10,
             height: "20vh",
-            backgroundColor: "#fff4f9",
+            backgroundColor: "#fcedf4",
+            border: 0,
+            boxShadow: 0,
           }}
         >
           <CardContent>
             <Typography variant="h4" sx={{ textAlign: "center" }}>
-              Visualize Your Quilt:
+              Visualize Your Quilt
               <Typography variant="h6" sx={{ paddingTop: 5 }}>
                 Upload your favorite fabric images and easily arrange them on a
                 dynamic grid to see how they work together
@@ -98,7 +101,7 @@ function LandingPage() {
         >
           <CardContent>
             <Typography variant="h4" sx={{ textAlign: "center" }}>
-              Design with Confidence:
+              Design with Confidence
               <Typography variant="h6" sx={{ paddingTop: 5 }}>
                 Experiment with different fabric combinations to create the
                 perfect quilt design before you start cutting
@@ -116,7 +119,7 @@ function LandingPage() {
         >
           <CardContent>
             <Typography variant="h4" sx={{ textAlign: "center" }}>
-              Download Your Creations:
+              Download Your Creations
               <Typography variant="h6" sx={{ paddingTop: 5 }}>
                 Once you’ve crafted your ideal pattern, download an image of
                 your design to guide your project

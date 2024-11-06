@@ -14,8 +14,20 @@ function Footer() {
 
   return (
     <footer>
-      <Button onClick={() => history.push('/about')} variant="contained" sx={{m: 8, backgroundColor: '#bf7296'}}>
-        Learn more about Pass The Good Scissors
+      <Button
+        onClick={() => history.push("/about")}
+        variant="contained"
+        sx={{
+          height: 43,
+          m: 8,
+          border: 0,
+          boxShadow: 0,
+          borderRadius: 0,
+          backgroundColor: "#bf7296",
+          textTransform: 'unset'
+        }}
+      >
+        <Typography variant="body2">Learn more about Pass The Good Scissors</Typography>
       </Button>
       <Typography>&copy; Evan Bouman</Typography>
     </footer>

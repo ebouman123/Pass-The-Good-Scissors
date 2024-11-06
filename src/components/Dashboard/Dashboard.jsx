@@ -1,6 +1,3 @@
-import React from "react";
-import { useSelector } from "react-redux";
-
 import { Box } from "@mui/material";
 import { Typography } from "@mui/material";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -16,7 +13,6 @@ import CardMedia from "@mui/material/CardMedia";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 function Dashboard() {
-  const user = useSelector((store) => store.user);
   const history = useHistory();
 
   return (
@@ -105,7 +101,7 @@ function Dashboard() {
       </Box>
       <Box>
         <List
-          sx={{ backgroundColor: "#e8eaf5", width: "33vh" }}
+          sx={{ backgroundColor: "#e8eaf5", width: "33vh", marginBottom: 1 }}
           subheader={
             <ListSubheader sx={{ fontSize: 20, p: 0, color: "#000000" }}>
               Shop for Fabric or Patterns!
@@ -193,6 +189,7 @@ function Dashboard() {
             <ListItemText primary="Sarah Jean Makes" />
           </ListItem>
         </List>
+        <Typography variant="caption">*Pass The Good Scissors is not affiliated with any of these sites.</Typography>
       </Box>
     </Box>
   );
