@@ -93,10 +93,10 @@ export default function DisplayQuilts() {
 
   return (
     <Box sx={{ marginLeft: 6, marginTop: 5, display: "flex", height: '100vh' }}>
-      <Box sx={{ marginRight: 20 }}>
+      <Box sx={{ paddingRight: 10 }}>
         <UploadQuilt />
       </Box>
-      <Box>
+      <Box sx={{ paddingLeft: 10 }}>
         <Typography variant="h4" sx={{ marginBottom: 3 }}>
           Your Finished Quilts
         </Typography>

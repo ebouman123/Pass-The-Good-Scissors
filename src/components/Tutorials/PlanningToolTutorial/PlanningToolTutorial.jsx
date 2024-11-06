@@ -4,13 +4,14 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect } from "react";
 import Square from "../../Square/Square";
 import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid2";
 import { Typography } from "@mui/material";
+import ButtonGroup from "@mui/material/ButtonGroup";
 
 export default function PlanningToolTutorial() {
   const { setIsOpen, setSteps, setCurrentStep } = useTour();
@@ -25,19 +26,23 @@ export default function PlanningToolTutorial() {
       },
       {
         selector: '[planning-tour="step-2"]',
-        content: "If you need to reset the entire grid, press the Reset button.",
+        content:
+          "If you need to reset the entire grid, press the Reset button.",
       },
       {
         selector: '[planning-tour="step-3"]',
-        content: "You can clear a specific square on the grid by clicking this button, then clicking the square.",
+        content:
+          "You can clear a specific square on the grid by clicking this button, then clicking the square.",
       },
       {
         selector: '[planning-tour="step-4"]',
-        content: "You can use these inputs to change the number of rows and columns of the grid. Please note, this will reset any progress you have made on your grid.",
+        content:
+          "You can use these inputs to change the number of rows and columns of the grid. Please note, this will reset any progress you have made on your grid.",
       },
       {
         selector: '[planning-tour="step-5"]',
-        content: "Finally, click Export to download your finished grid as an image, along with a list of the fabrics used. Happy quilting! ",
+        content:
+          "Finally, click Export to download your finished grid as an image, along with a list of the fabrics used. Happy quilting! ",
       },
     ]);
     setCurrentStep(0);
@@ -76,37 +81,46 @@ export default function PlanningToolTutorial() {
           </Button>
         </ButtonGroup>
       </Box>
-      <Box sx={{ marginLeft: 3 }}>
-        <Typography variant="h4">Plan Your Quilt!</Typography>
+      <Box
+        sx={{ paddingLeft: 6, paddingRight: 6, paddingTop: 5, height: "100vh" }}
+      >
         <Box sx={{ display: "flex" }}>
           <Box
             sx={{
-              width: "600px",
-              borderRight: "1px solid #ccc",
-              padding: "10px",
+              width: 476,
+              height: 840,
+              border: 1,
+              borderRadius: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="h5">Select a Fabric</Typography>
             <Grid
               container
-              spacing={4}
+              spacing={3}
               direction="row"
               justify="flex-start"
               alignItems="flex-start"
-              sx={{ overflow: "auto", maxHeight: 800 }}
+              sx={{
+                overflow: "auto",
+                height: 600,
+                backgroundColor: "#fafafa",
+                paddingLeft: 3,
+                paddingTop: 3,
+              }}
             >
               <Grid key="1">
                 <Card
                   sx={{
+                    marginBottom: 0,
                     width: 200,
                     height: 200,
+                    "&:hover": { cursor: "pointer" },
+                    boxShadow: 0,
+                    border: "2px solid #dedede",
                   }}
                   planning-tour="step-1"
                 >
-                  <CardMedia
-                    sx={{ height: 150 }}
-                    image="/assets/Fabric1.png"
-                  />
+                  <CardMedia sx={{ height: 150 }} image="/assets/Fabric1.png" />
                   <CardContent sx={{ maxHeight: 50 }}>
                     <Typography
                       noWrap={true}
@@ -122,14 +136,15 @@ export default function PlanningToolTutorial() {
               <Grid key="2">
                 <Card
                   sx={{
+                    marginBottom: 0,
                     width: 200,
                     height: 200,
+                    "&:hover": { cursor: "pointer" },
+                    boxShadow: 0,
+                    border: "2px solid #dedede",
                   }}
                 >
-                  <CardMedia
-                    sx={{ height: 150 }}
-                    image="/assets/Fabric2.png"
-                  />
+                  <CardMedia sx={{ height: 150 }} image="/assets/Fabric2.png" />
                   <CardContent sx={{ maxHeight: 50 }}>
                     <Typography
                       noWrap={true}
@@ -145,14 +160,15 @@ export default function PlanningToolTutorial() {
               <Grid key="3">
                 <Card
                   sx={{
+                    marginBottom: 1,
                     width: 200,
                     height: 200,
+                    "&:hover": { cursor: "pointer" },
+                    boxShadow: 0,
+                    border: "2px solid #dedede",
                   }}
                 >
-                  <CardMedia
-                    sx={{ height: 150 }}
-                    image="/assets/Fabric5.png"
-                  />
+                  <CardMedia sx={{ height: 150 }} image="/assets/Fabric5.png" />
                   <CardContent sx={{ maxHeight: 50 }}>
                     <Typography
                       noWrap={true}
@@ -166,28 +182,64 @@ export default function PlanningToolTutorial() {
                 </Card>
               </Grid>
             </Grid>
-            <div style={{ marginTop: "20px" }} planning-tour="step-4">
-              <label>
-                Rows:
-                <input type="number" min="1" disabled={true} />
-              </label>
-              <label style={{ marginLeft: "10px" }}>
-                Columns:
-                <input type="number" min="1" disabled={true} />
-              </label>
-            </div>
-            <Button variant="outlined" style={{ marginTop: "10px" }} planning-tour="step-2">
-              Reset All Squares
-            </Button>
-            <Button style={{ marginTop: "10px" }} variant="outlined" planning-tour="step-3">
-              Clear Individual Squares
-            </Button>
-            <Button variant="contained" style={{ marginTop: "10px" }} planning-tour="step-5">
-              Export as Image
-            </Button>
+            <Box
+              planning-tour="step-4"
+              sx={{
+                p: 3,
+                display: "flex",
+                justifyContent: "space-between",
+                borderTop: 1,
+              }}
+            >
+              <TextField type="number" label="Rows" min="1" disabled={true} />
+              <TextField
+                type="number"
+                label="Columns"
+                min="1"
+                disabled={true}
+              />
+            </Box>
+            <Box
+              sx={{
+                paddingLeft: 3,
+                paddingRight: 3,
+                display: "flex",
+                justifyContent: "space-evenly",
+              }}
+            >
+              <Button
+                variant="outlined"
+                style={{ marginTop: "10px" }}
+                planning-tour="step-2"
+              >
+                Reset All Squares
+              </Button>
+              <Button
+                style={{ marginTop: "10px" }}
+                variant="outlined"
+                planning-tour="step-3"
+              >
+                Clear Individual Squares
+              </Button>
+            </Box>
+            <Box
+              sx={{
+                p: 3,
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Button
+                variant="contained"
+                style={{ marginTop: "10px" }}
+                planning-tour="step-5"
+              >
+                Export as Image
+              </Button>
+            </Box>
           </Box>
 
-          <div style={{ flexGrow: 1, padding: "10px" }}>
+          <Box sx={{ flexGrow: 1, paddingLeft: 30 }}>
             <div
               style={{
                 display: "grid",
@@ -203,7 +255,7 @@ export default function PlanningToolTutorial() {
                 />
               ))}
             </div>
-          </div>
+          </Box>
         </Box>
       </Box>
     </>
