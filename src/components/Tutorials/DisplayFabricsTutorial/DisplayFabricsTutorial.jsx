@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -90,7 +91,7 @@ export default function DisplayFabricsTutorial() {
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      Meow
+                      Backyard Flamingo Hiding Cat
                     </Typography>
                   </CardContent>
                   <CardActions fabric-tour="step-3">
@@ -102,8 +103,8 @@ export default function DisplayFabricsTutorial() {
                     >
                       Delete
                     </Button>
-                    <Button variant="contained" startIcon={<EditIcon />}>
-                      Edit
+                    <Button variant="contained" startIcon={<MoreHorizIcon />}>
+                      View
                     </Button>
                   </CardActions>
                 </Card>
@@ -116,7 +117,7 @@ export default function DisplayFabricsTutorial() {
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      Meow 2
+                      Lets Play Blue Tossed Cat Dolls
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -128,8 +129,8 @@ export default function DisplayFabricsTutorial() {
                     >
                       Delete
                     </Button>
-                    <Button variant="contained" startIcon={<EditIcon />}>
-                      Edit
+                    <Button variant="contained" startIcon={<MoreHorizIcon />}>
+                      View
                     </Button>
                   </CardActions>
                 </Card>
@@ -142,7 +143,7 @@ export default function DisplayFabricsTutorial() {
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      Meow 3
+                    Eerie Pumpkin and Catnip
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -154,8 +155,8 @@ export default function DisplayFabricsTutorial() {
                     >
                       Delete
                     </Button>
-                    <Button variant="contained" startIcon={<EditIcon />}>
-                      Edit
+                    <Button variant="contained" startIcon={<MoreHorizIcon />}>
+                      View
                     </Button>
                   </CardActions>
                 </Card>

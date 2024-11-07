@@ -7,6 +7,7 @@ import UploadFabric from "../UploadFabric/UploadFabric";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -121,7 +122,7 @@ export default function DisplayFabrics() {
                         title={fileName}
                       />
                       <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
+                        <Typography noWrap={true} gutterBottom variant="h5" component="div">
                           {fileName}
                         </Typography>
                       </CardContent>
@@ -165,9 +166,9 @@ export default function DisplayFabrics() {
                         <Button
                           variant="contained"
                           onClick={() => handleEdit(fabric.fabricName)}
-                          startIcon={<EditIcon />}
+                          startIcon={<MoreHorizIcon />}
                         >
-                          Edit
+                          View
                         </Button>
                       </CardActions>
                     </Card>

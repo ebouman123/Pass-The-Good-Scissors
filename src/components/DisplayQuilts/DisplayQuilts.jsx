@@ -7,6 +7,7 @@ import UploadQuilt from "../UploadQuilt/UploadQuilt";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -92,7 +93,7 @@ export default function DisplayQuilts() {
   };
 
   return (
-    <Box sx={{ marginLeft: 6, marginTop: 5, display: "flex", height: '100vh' }}>
+    <Box sx={{ marginLeft: 6, marginTop: 5, display: "flex", height: "100vh" }}>
       <Box sx={{ paddingRight: 10 }}>
         <UploadQuilt />
       </Box>
@@ -121,7 +122,7 @@ export default function DisplayQuilts() {
                         title={fileName}
                       />
                       <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
+                        <Typography noWrap={true} gutterBottom variant="h5" component="div">
                           {fileName}
                         </Typography>
                       </CardContent>
@@ -162,20 +163,12 @@ export default function DisplayQuilts() {
                             </Button>
                           </DialogActions>
                         </Dialog>
-
-                        {/* <Button
-                        variant="outlined"
-                        onClick={() => deleteQuilt(quilt)}
-                        startIcon={<DeleteIcon />}
-                      >
-                        Delete
-                      </Button> */}
                         <Button
                           variant="contained"
                           onClick={() => handleEdit(quilt.quiltName)}
-                          startIcon={<EditIcon />}
+                          startIcon={<MoreHorizIcon />}
                         >
-                          Edit
+                          View
                         </Button>
                       </CardActions>
                     </Card>

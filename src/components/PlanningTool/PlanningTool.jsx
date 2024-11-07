@@ -205,7 +205,6 @@ export default function PlanningTool() {
               sx={{
                 overflow: "auto",
                 maxHeight: 600,
-                backgroundColor: '#fafafa',
                 paddingLeft: 3,
                 paddingTop: 3,
               }}

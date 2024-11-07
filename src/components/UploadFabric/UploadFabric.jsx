@@ -116,7 +116,7 @@ export default function UploadFabric() {
     <Box component="form" noValidate autoComplete="off">
       <List sx={{ p: 0 }}>
         <ListItemText>1. Choose your fabric</ListItemText>
-        <ListItem sx={{ paddingLeft: 0, width: 250 }}>
+        <ListItem sx={{ paddingLeft: 0, width: 250, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
           <Button
             component="label"
             sx={{ marginRight: 3 }}

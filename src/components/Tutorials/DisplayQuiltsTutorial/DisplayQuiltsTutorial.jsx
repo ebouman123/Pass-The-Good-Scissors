@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -103,8 +104,8 @@ export default function DisplayQuiltsTutorial() {
                     >
                       Delete
                     </Button>
-                    <Button variant="contained" startIcon={<EditIcon />}>
-                      Edit
+                    <Button variant="contained" startIcon={<MoreHorizIcon />}>
+                      View
                     </Button>
                   </CardActions>
                 </Card>
@@ -130,8 +131,8 @@ export default function DisplayQuiltsTutorial() {
                     >
                       Delete
                     </Button>
-                    <Button variant="contained" startIcon={<EditIcon />}>
-                      Edit
+                    <Button variant="contained" startIcon={<MoreHorizIcon />}>
+                      View
                     </Button>
                   </CardActions>
                 </Card>

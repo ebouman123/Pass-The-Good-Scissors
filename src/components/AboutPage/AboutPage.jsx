@@ -3,7 +3,7 @@ function AboutPage() {
   return (
     <div className="container">
       <div>
-        <p>This about page is for anyone to read!</p>
+        <p>Why are you here?</p>
       </div>
     </div>
   );

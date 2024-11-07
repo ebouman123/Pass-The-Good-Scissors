@@ -60,7 +60,7 @@ function Dashboard() {
           sx={{
             marginRight: 4,
             marginTop: 15,
-            "&:hover": { cursor: "pointer" },
+            "&:hover": { cursor: "pointer", boxShadow: 6 },
             height: 550,
           }}
           onClick={() => history.push("/fabrics")}
@@ -81,7 +81,7 @@ function Dashboard() {
           sx={{
             marginLeft: 4,
             marginTop: 15,
-            "&:hover": { cursor: "pointer" },
+            "&:hover": { cursor: "pointer", boxShadow: 6 },
             height: 550,
           }}
           onClick={() => history.push("/planning")}

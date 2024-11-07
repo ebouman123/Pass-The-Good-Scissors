@@ -27,7 +27,7 @@ function Footer() {
           textTransform: 'unset'
         }}
       >
-        <Typography variant="body2">Learn more about Pass The Good Scissors</Typography>
+        <Typography variant="body2">Learn more about Pass the Good Scissors</Typography>
       </Button>
       <Typography>&copy; Evan Bouman</Typography>
     </footer>

@@ -47,8 +47,8 @@ function LandingPage() {
           variant="h4"
           sx={{ paddingTop: 10, paddingBottom: 17, textAlign: "center" }}
         >
-          With Pass the Good Scissors, planning your next quilt has never been
-          easier.
+          With <Typography variant="h4" sx={{display: "inline", fontStyle: 'italic'}}>Pass the Good Scissors</Typography>, planning your
+          next quilt has never been easier.
         </Typography>
         <Button
           onClick={() => history.push("/login")}

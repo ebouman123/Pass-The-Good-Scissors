@@ -100,8 +100,8 @@ function LoginForm() {
                   sx={{ width: 350 }}
                   slotProps={{
                     input: {
-                      startAdornment: (
-                        <InputAdornment position="start">
+                      endAdornment: (
+                        <InputAdornment position="end">
                           <AccountCircle />
                         </InputAdornment>
                       ),

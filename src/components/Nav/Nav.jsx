@@ -1,7 +1,6 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import LogOutButton from "../LogOutButton/LogOutButton";
-import "./Nav.css";
 import { useSelector } from "react-redux";
 import { Box, Typography } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
@@ -20,8 +19,8 @@ function Nav() {
   return (
     <Box>
       {showNav ? (
-        <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="relative" sx={{ height: 80 }}>
+        <Box sx={{ flexGrow: 1, m: 2}}>
+          <AppBar position="relative" sx={{ height: 80, borderRadius: 3 }}>
             <Toolbar sx={{ height: 80 }}>
               <Link
                 component={RouterLink}
@@ -30,7 +29,7 @@ function Nav() {
                 to="/landing"
               >
                 <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-                  Pass The Good Scissors!
+                  Pass the Good Scissors!
                 </Typography>
               </Link>
               <Box flexGrow={1} />
