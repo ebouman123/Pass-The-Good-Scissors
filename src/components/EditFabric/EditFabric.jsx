@@ -102,6 +102,17 @@ export default function EditFabric() {
     alert("Saved!");
   };
 
+  const handleFillComment = () => {
+    setCommentInput("$11.98 per yard");
+    setComment("$11.98 per yard")
+  };
+
+  const handleFillLink = () => {
+    setLinkInput('https://www.fatquartershop.com/laguna-sunrise-geranium-harbor-yardage')
+    setLink('https://www.fatquartershop.com/laguna-sunrise-geranium-harbor-yardage')
+
+  };
+
   return (
     <Box sx={{ marginLeft: 3 }}>
       <Typography
@@ -112,9 +123,11 @@ export default function EditFabric() {
       </Typography>
       <Divider sx={{ marginTop: 3, marginBottom: 3 }} />
       <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
-        <Box sx={{width: '50vh', wordWrap: 'break-word'}}>
-          <Box sx={{p: 4}}>
-            <Typography variant="h4" sx={{paddingBottom: 3}}>Comment</Typography>
+        <Box sx={{ width: "50vh", wordWrap: "break-word" }}>
+          <Box sx={{ p: 4 }}>
+            <Typography variant="h4" sx={{ paddingBottom: 3 }}>
+              Comment
+            </Typography>
             {comment ? (
               <Typography variant="body">{comment}</Typography>
             ) : (
@@ -123,8 +136,10 @@ export default function EditFabric() {
               </Typography>
             )}
           </Box>
-          <Box sx={{p: 4, marginTop: 2}}> 
-            <Typography variant="h4" sx={{paddingBottom: 3}}>Fabric Link</Typography>
+          <Box sx={{ p: 4, marginTop: 2 }}>
+            <Typography variant="h4" sx={{ paddingBottom: 3 }}>
+              Fabric Link
+            </Typography>
             {link ? (
               <Typography variant="body">
                 <a href={link} target="_blank">
@@ -144,6 +159,7 @@ export default function EditFabric() {
             <TextField
               type="text"
               label="Add a Comment"
+              onClick={handleFillComment}
               multiline
               value={commentInput}
               onChange={handleComment}
@@ -152,6 +168,7 @@ export default function EditFabric() {
             <TextField
               type="text"
               label="Add a Link"
+              onClick={handleFillLink}
               multiline
               value={linkInput}
               onChange={handleLink}
@@ -165,14 +182,17 @@ export default function EditFabric() {
             >
               Save
             </Button>
-            <Button variant="outlined" onClick={() => history.push("/fabrics")} sx={{borderRadius: 10}}>
+            <Button
+              variant="outlined"
+              onClick={() => history.push("/fabrics")}
+              sx={{ borderRadius: 10 }}
+            >
               Back
             </Button>
           </Box>
         </Box>
         <Box>
-          <Card sx={{ width: 750, border: 0, boxShadow: 0
-           }}>
+          <Card sx={{ width: 750, border: 0, boxShadow: 0 }}>
             <CardContent>
               <Typography gutterBottom variant="h4" component="div">
                 {formattedFabricName}

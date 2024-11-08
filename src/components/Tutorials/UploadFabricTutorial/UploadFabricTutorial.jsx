@@ -6,6 +6,8 @@ import { styled } from "@mui/material/styles";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import Typography from "@mui/material/Typography";
+
 
 export default function UploadFabricTutorial() {
   // Hides the file input in a button
@@ -24,7 +26,7 @@ export default function UploadFabricTutorial() {
   return (
     <Box component="form" noValidate autoComplete="off">
       <List sx={{ p: 0 }}>
-        <ListItemText>1. Choose your fabric</ListItemText>
+          <Typography variant="h6">1. Choose your fabric</Typography>
         <ListItem sx={{ paddingLeft: 0, width: 250 }}>
           <Button
             component="label"

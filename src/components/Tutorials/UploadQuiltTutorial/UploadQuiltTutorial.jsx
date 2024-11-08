@@ -6,6 +6,8 @@ import { styled } from "@mui/material/styles";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import Typography from "@mui/material/Typography";
+
 
 export default function UploadQuiltTutorial() {
   // Hides the file input in a button

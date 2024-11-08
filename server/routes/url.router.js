@@ -46,30 +46,6 @@ router.get("/generate-presigned-url", (req, res) => {
   });
 });
 
-// // Generate presigned URL for a PUT request to upload a quilt
-// router.get("/generate-presigned-url-quilt", (req, res) => {
-//   const fileName = req.query.fileName;
-//   const fileType = req.query.fileType;
-
-//   // Params needed for generating a presigned URL
-//   const s3Params = {
-//     Bucket: "fabricimagebucket", // The S3 bucket name
-//     Key: fileName, // The name of the file to be uploaded
-//     Expires: 600, // The URL expiration time in seconds (10 minutes)
-//     ContentType: fileType, // The content type of the file
-//     ACL: "public-read", // Set access control to allow public read access
-//   };
-
-//   // Generate the presigned URL for the putObject operation
-//   s3.getSignedUrl("putObject", s3Params, (err, url) => {
-//     if (err) {
-//       return res.status(500).json({ error: err.message });
-//     }
-//     // If successful, send the generated URL back in the response
-//     res.json({ url });
-//   });
-// });
-
 
 // Generate multiple presigned urls to GET multiple images
 router.get("/generate-multiple-presigned-urls", async (req, res) => {

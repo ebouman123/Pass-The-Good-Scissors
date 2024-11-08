@@ -11,9 +11,21 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import Lottie from "react-lottie";
+import loadingCat from "../../lotties/loader-cat.json";
 
 function Dashboard() {
   const history = useHistory();
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: loadingCat,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+    speed: 3,
+  };
 
   return (
     <Box
@@ -28,29 +40,71 @@ function Dashboard() {
     >
       <Box>
         <List
-          sx={{ backgroundColor: "#e8eaf5", width: "33vh" }}
+          sx={{ width: "33vh" }}
           subheader={
-            <ListSubheader sx={{ fontSize: 20, p: 0, color: "#000000" }}>
-              New User? Start Here!
+            <ListSubheader
+              sx={{ fontSize: 25, p: 0, color: "#000000", marginBottom: 2 }}
+            >
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                New User? Start Here!
+                <Lottie options={defaultOptions} height={100} width={100} />
+              </Box>
             </ListSubheader>
           }
           component="nav"
         >
-          <ListItem sx={{ height: 70 }}>
-            <ListItemButton onClick={() => history.push("/fabricsTutorial")}>
-              <ListItemText primary="Manage Fabrics Tutorial" />
+          <ListItem
+            sx={{
+              height: 70,
+              backgroundColor: "#cdcaf5",
+              borderRadius: 10,
+              marginBottom: 2,
+            }}
+          >
+            <ListItemButton
+              sx={{ borderRadius: 10 }}
+              onClick={() => history.push("/fabricsTutorial")}
+            >
+              <ListItemText
+                sx={{ textAlign: "center" }}
+                primary="Manage Fabrics Tutorial"
+              />
             </ListItemButton>
           </ListItem>
-          <Divider />
-          <ListItem>
-            <ListItemButton onClick={() => history.push("/planningTutorial")}>
-              <ListItemText primary="Planning Tool Tutorial" />
+          <ListItem
+            sx={{
+              height: 70,
+              backgroundColor: "#cdcaf5",
+              borderRadius: 10,
+              marginBottom: 2,
+            }}
+          >
+            <ListItemButton
+              sx={{ borderRadius: 10 }}
+              onClick={() => history.push("/planningTutorial")}
+            >
+              <ListItemText
+                sx={{ textAlign: "center" }}
+                primary="Planning Tool Tutorial"
+              />
             </ListItemButton>
           </ListItem>
-          <Divider />
-          <ListItem>
-            <ListItemButton onClick={() => history.push("/quiltsTutorial")}>
-              <ListItemText primary="Finished Quilts Tutorial" />
+          <ListItem
+            sx={{
+              height: 70,
+              backgroundColor: "#cdcaf5",
+              borderRadius: 10,
+              marginBottom: 2,
+            }}
+          >
+            <ListItemButton
+              sx={{ borderRadius: 10 }}
+              onClick={() => history.push("/quiltsTutorial")}
+            >
+              <ListItemText
+                sx={{ textAlign: "center" }}
+                primary="Finished Quilts Tutorial"
+              />
             </ListItemButton>
           </ListItem>
         </List>
@@ -99,18 +153,20 @@ function Dashboard() {
           </CardContent>
         </Card>
       </Box>
-      <Box>
+      <Box sx={{marginTop: 3}}>
         <List
-          sx={{ backgroundColor: "#e8eaf5", width: "33vh", marginBottom: 1 }}
+          sx={{ width: "33vh", marginBottom: 1 }}
           subheader={
-            <ListSubheader sx={{ fontSize: 20, p: 0, color: "#000000" }}>
+            <ListSubheader
+              sx={{ fontSize: 25, p: 0, color: "#000000", marginBottom: 2 }}
+            >
               Shop for Fabric or Patterns!
             </ListSubheader>
           }
           component="nav"
         >
           <ListItem
-            sx={{ height: 70 }}
+            sx={{ height: 70, borderRadius: 10 }}
             button
             component="a"
             href="https://www.alderwood-studio.com/"
@@ -120,7 +176,7 @@ function Dashboard() {
           </ListItem>
           <Divider />
           <ListItem
-            sx={{ height: 70 }}
+            sx={{ height: 70, borderRadius: 10 }}
             button
             component="a"
             href="https://www.connectingthreads.com/"
@@ -130,7 +186,7 @@ function Dashboard() {
           </ListItem>
           <Divider />
           <ListItem
-            sx={{ height: 70 }}
+            sx={{ height: 70, borderRadius: 10 }}
             button
             component="a"
             href="https://elizabethhartman.com/"
@@ -140,7 +196,7 @@ function Dashboard() {
           </ListItem>
           <Divider />
           <ListItem
-            sx={{ height: 70 }}
+            sx={{ height: 70, borderRadius: 10 }}
             button
             component="a"
             href="https://www.fatquartershop.com/"
@@ -150,7 +206,7 @@ function Dashboard() {
           </ListItem>
           <Divider />
           <ListItem
-            sx={{ height: 70 }}
+            sx={{ height: 70, borderRadius: 10 }}
             button
             component="a"
             href="https://www.hawthornesupplyco.com/"
@@ -160,7 +216,7 @@ function Dashboard() {
           </ListItem>
           <Divider />
           <ListItem
-            sx={{ height: 70 }}
+            sx={{ height: 70, borderRadius: 10 }}
             button
             component="a"
             href="https://www.hancocks-paducah.com/"
@@ -170,7 +226,7 @@ function Dashboard() {
           </ListItem>
           <Divider />
           <ListItem
-            sx={{ height: 70 }}
+            sx={{ height: 70, borderRadius: 10 }}
             button
             component="a"
             href="https://www.missouriquiltco.com/"
@@ -180,7 +236,7 @@ function Dashboard() {
           </ListItem>
           <Divider />
           <ListItem
-            sx={{ height: 70 }}
+            sx={{ height: 70, borderRadius: 10 }}
             button
             component="a"
             href="https://www.sarahjeanmakes.com/shop"
@@ -189,7 +245,9 @@ function Dashboard() {
             <ListItemText primary="Sarah Jean Makes" />
           </ListItem>
         </List>
-        <Typography variant="caption">*Pass The Good Scissors is not affiliated with any of these sites.</Typography>
+        <Typography variant="caption">
+          *Pass The Good Scissors is not affiliated with any of these sites.
+        </Typography>
       </Box>
     </Box>
   );

@@ -191,8 +191,8 @@ export default function PlanningTool() {
             height: 840,
             border: 1,
             borderRadius: 2,
-            overflow: 'hidden'
-         }}
+            overflow: "hidden",
+          }}
         >
           {/* Display fabric options for selection in a grid */}
           {fabricUrls.length > 0 ? (
@@ -288,13 +288,17 @@ export default function PlanningTool() {
               justifyContent: "space-evenly",
             }}
           >
-            <Button onClick={resetSquares} variant="outlined" sx={{borderRadius: 10}}>
+            <Button
+              onClick={resetSquares}
+              variant="outlined"
+              sx={{ borderRadius: 10 }}
+            >
               Reset All Squares
             </Button>
             <Button
               onClick={() => setIsNextSquareWhite(true)} // Set toggle for next square to white
               variant="outlined"
-              sx={{borderRadius: 10}}
+              sx={{ borderRadius: 10 }}
             >
               Clear Individual Squares
             </Button>
@@ -306,7 +310,11 @@ export default function PlanningTool() {
               justifyContent: "center",
             }}
           >
-            <Button onClick={exportToImage} variant="contained" sx={{borderRadius: 10}}>
+            <Button
+              onClick={exportToImage}
+              variant="contained"
+              sx={{ borderRadius: 10 }}
+            >
               Export as Image
             </Button>
           </Box>
