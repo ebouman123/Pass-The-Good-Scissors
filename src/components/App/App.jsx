@@ -37,6 +37,7 @@ import "@fontsource/roboto/700.css";
 
 import "./App.css";
 
+
 function App() {
   const dispatch = useDispatch();
 
@@ -60,7 +61,7 @@ function App() {
       },
     },
     typography: {
-      fontFamily: "Lato, Roboto, sans-serif"
+      fontFamily: "Lato, Shrikhand, Roboto, sans-serif"
     },
   });
 

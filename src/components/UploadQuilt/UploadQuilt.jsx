@@ -9,6 +9,7 @@ import { styled } from "@mui/material/styles";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import { Typography } from "@mui/material";
 
 export default function UploadQuilt() {
   const dispatch = useDispatch();
@@ -115,11 +116,13 @@ export default function UploadQuilt() {
   return (
     <Box component="form" noValidate autoComplete="off">
       <List sx={{ p: 0 }}>
-        <ListItemText>1. Choose your quilt</ListItemText>
+        <ListItemText>
+          <Typography variant="h6">1. Choose your quilt</Typography>
+        </ListItemText>
         <ListItem sx={{ paddingLeft: 0, width: 250 }}>
           <Button
             component="label"
-            sx={{ marginRight: 3 }}
+            sx={{ marginRight: 3, borderRadius: 10 }}
             role={undefined}
             variant="contained"
             tabIndex={-1}
@@ -130,7 +133,9 @@ export default function UploadQuilt() {
           </Button>
           {file && <p>File Chosen: {file.name}</p>}
         </ListItem>
-        <ListItemText>2. Enter a name for your quilt</ListItemText>
+        <ListItemText>
+          <Typography variant="h6">2. Enter a name for your quilt</Typography>
+        </ListItemText>
         <ListItem sx={{ paddingLeft: 0 }}>
           <label htmlFor="imageNameInput">
             <TextField
@@ -145,9 +150,11 @@ export default function UploadQuilt() {
             />
           </label>
         </ListItem>
-        <ListItemText>3. Upload your awesome quilt!</ListItemText>
+        <ListItemText>
+          <Typography variant="h6">3. Upload your awesome quilt!</Typography>
+        </ListItemText>
         <ListItem sx={{ paddingLeft: 0 }}>
-          <Button variant="contained" onClick={handleUpload}>
+          <Button variant="contained" onClick={handleUpload} sx={{borderRadius: 10}}>
             Upload
           </Button>
         </ListItem>

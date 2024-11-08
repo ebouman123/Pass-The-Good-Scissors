@@ -28,7 +28,7 @@ export default function UploadFabricTutorial() {
         <ListItem sx={{ paddingLeft: 0, width: 250 }}>
           <Button
             component="label"
-            sx={{ marginRight: 3 }}
+            sx={{ marginRight: 3, borderRadius: 10 }}
             variant="contained"
             tabIndex={-1}
             startIcon={<CloudUploadIcon />}
@@ -39,7 +39,6 @@ export default function UploadFabricTutorial() {
         </ListItem>
         <ListItemText>2. Enter a name for your fabric</ListItemText>
         <ListItem sx={{ paddingLeft: 0 }}>
-          <label htmlFor="imageNameInput">
             <TextField
               type="text"
               label="Fabric Name"
@@ -48,11 +47,10 @@ export default function UploadFabricTutorial() {
               variant="outlined"
               size="small"
             />
-          </label>
         </ListItem>
         <ListItemText>3. Upload your fabric!</ListItemText>
         <ListItem sx={{ paddingLeft: 0 }}>
-          <Button variant="contained" >
+          <Button variant="contained" sx={{ borderRadius: 10 }}>
             Upload
           </Button>
         </ListItem>

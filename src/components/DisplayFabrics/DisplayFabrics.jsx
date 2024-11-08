@@ -117,9 +117,10 @@ export default function DisplayFabrics() {
                   <Grid xs={12} sm={6} md={3} key={fabric.fabricName}>
                     <Card sx={{ width: 385, borderRadius: 3 }}>
                       <CardMedia
-                        sx={{ height: 385 }}
+                        sx={{ height: 385, cursor: 'pointer' }}
                         image={fabric.url}
                         title={fileName}
+                        onClick={() => handleEdit(fabric.fabricName)}
                       />
                       <CardContent>
                         <Typography noWrap={true} gutterBottom variant="h5" component="div">
@@ -133,6 +134,7 @@ export default function DisplayFabrics() {
                           onClick={() => handleClickOpen(fabric)}
                           startIcon={<DeleteIcon />}
                           color="secondary"
+                          sx={{borderRadius: 10}}
                         >
                           Delete
                         </Button>
@@ -141,6 +143,7 @@ export default function DisplayFabrics() {
                           onClose={handleClose}
                           aria-labelledby="alert-dialog-title"
                           aria-describedby="alert-dialog-description"
+                          maxWidth='lg'
                         >
                           <DialogTitle id="alert-dialog-title">
                             {"Permanently Delete This Fabric?"}
@@ -167,6 +170,7 @@ export default function DisplayFabrics() {
                           variant="contained"
                           onClick={() => handleEdit(fabric.fabricName)}
                           startIcon={<MoreHorizIcon />}
+                          sx={{borderRadius: 10}}
                         >
                           View
                         </Button>

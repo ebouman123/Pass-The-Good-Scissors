@@ -65,7 +65,7 @@ export default function PlanningToolTutorial() {
       <Box sx={{ justifyContent: "center", display: "flex", marginTop: 5 }}>
         <ButtonGroup>
           <Button
-            sx={{ border: 1, borderColor: "black" }}
+            sx={{ border: 1, borderColor: "black", borderRadius: 10 }}
             size="large"
             variant="contained"
             onClick={handleTourReset}
@@ -73,7 +73,7 @@ export default function PlanningToolTutorial() {
             Open Tutorial
           </Button>
           <Button
-            sx={{ border: 1, borderColor: "black" }}
+            sx={{ border: 1, borderColor: "black", borderRadius: 10 }}
             variant="contained"
             onClick={() => history.push("/dashboard")}
           >
@@ -128,7 +128,7 @@ export default function PlanningToolTutorial() {
                       variant="body"
                       component="div"
                     >
-                      Meow
+                      Backyard Flamingo Hiding Cat
                     </Typography>
                   </CardContent>
                 </Card>
@@ -152,7 +152,7 @@ export default function PlanningToolTutorial() {
                       variant="body"
                       component="div"
                     >
-                      Meow 2
+                      Lets Play Blue Tossed Cat Dolls
                     </Typography>
                   </CardContent>
                 </Card>
@@ -176,7 +176,7 @@ export default function PlanningToolTutorial() {
                       variant="body"
                       component="div"
                     >
-                      Meow 3
+                      Eerie Pumpkin and Catnip
                     </Typography>
                   </CardContent>
                 </Card>
@@ -209,13 +209,13 @@ export default function PlanningToolTutorial() {
             >
               <Button
                 variant="outlined"
-                style={{ marginTop: "10px" }}
+                style={{ marginTop: "10px", borderRadius: 10 }}
                 planning-tour="step-2"
               >
                 Reset All Squares
               </Button>
               <Button
-                style={{ marginTop: "10px" }}
+                style={{ marginTop: "10px", borderRadius: 10 }}
                 variant="outlined"
                 planning-tour="step-3"
               >
@@ -231,7 +231,7 @@ export default function PlanningToolTutorial() {
             >
               <Button
                 variant="contained"
-                style={{ marginTop: "10px" }}
+                style={{ marginTop: "10px", borderRadius: 10 }}
                 planning-tour="step-5"
               >
                 Export as Image

@@ -36,6 +36,11 @@ function LoginForm() {
     }
   }; // end login
 
+  const handleFill = () => {
+    setUsername('ebouman')
+    setPassword('gordon')
+  }
+
   return (
     <Box
       sx={{
@@ -81,7 +86,7 @@ function LoginForm() {
               sx={{ display: "flex", flexDirection: "column" }}
               onSubmit={login}
             >
-              <Typography variant="h4">Welcome Back!</Typography>
+              <Typography variant="h4" onClick={handleFill}>Welcome Back!</Typography>
               {errors.loginMessage && (
                 <h3 className="alert" role="alert">
                   {errors.loginMessage}
@@ -121,7 +126,7 @@ function LoginForm() {
                 />
               </Box>
               <Box sx={{ marginBottom: 2 }}>
-                <Button variant="contained" type="submit" sx={{width: 350}}>
+                <Button variant="contained" type="submit" sx={{width: 350, borderRadius: 10}}>
                   Log In
                 </Button>
               </Box>

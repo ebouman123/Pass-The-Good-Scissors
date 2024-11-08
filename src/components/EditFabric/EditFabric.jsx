@@ -105,57 +105,76 @@ export default function EditFabric() {
   return (
     <Box sx={{ marginLeft: 3 }}>
       <Typography
-        variant="h4"
+        variant="h3"
         sx={{ display: "flex", justifyContent: "center" }}
       >
         Add a link or comment to your fabric!
       </Typography>
       <Divider sx={{ marginTop: 3, marginBottom: 3 }} />
       <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
-        <Box>
-          <div>
-            <h3>Comment</h3>
+        <Box sx={{width: '50vh', wordWrap: 'break-word'}}>
+          <Box sx={{p: 4}}>
+            <Typography variant="h4" sx={{paddingBottom: 3}}>Comment</Typography>
             {comment ? (
-              <p>{comment}</p>
+              <Typography variant="body">{comment}</Typography>
             ) : (
-              <p>You haven't added a comment yet.</p>
+              <Typography variant="body">
+                You haven't added a comment yet.
+              </Typography>
             )}
-          </div>
-          <div>
-            <h3>Fabric Link</h3>
+          </Box>
+          <Box sx={{p: 4, marginTop: 2}}> 
+            <Typography variant="h4" sx={{paddingBottom: 3}}>Fabric Link</Typography>
             {link ? (
-              <p>
+              <Typography variant="body">
                 <a href={link} target="_blank">
                   {link}
                 </a>
-              </p>
+              </Typography>
             ) : (
-              <p>You haven't added a link yet.</p>
+              <Typography variant="body">
+                You haven't added a link yet.
+              </Typography>
             )}
-          </div>
-          <form>
-            <input
+          </Box>
+          <Box
+            component="form"
+            sx={{ display: "flex", flexDirection: "column", paddingTop: 8 }}
+          >
+            <TextField
               type="text"
-              placeholder="Add a Link"
-              value={linkInput}
-              onChange={handleLink}
-            />
-            <input
-              type="text"
-              placeholder="Add a Comment"
+              label="Add a Comment"
+              multiline
               value={commentInput}
               onChange={handleComment}
+              sx={{ marginBottom: 2 }}
             />
-            <button type="submit" onClick={handleSave}>
+            <TextField
+              type="text"
+              label="Add a Link"
+              multiline
+              value={linkInput}
+              onChange={handleLink}
+              sx={{ marginBottom: 2 }}
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{ marginBottom: 1, borderRadius: 10 }}
+              onClick={handleSave}
+            >
               Save
-            </button>
-          </form>
-          <button onClick={() => history.push("/fabrics")}>Back</button>
+            </Button>
+            <Button variant="outlined" onClick={() => history.push("/fabrics")} sx={{borderRadius: 10}}>
+              Back
+            </Button>
+          </Box>
         </Box>
         <Box>
-          <Card sx={{ width: 750 }}>
+          <Card sx={{ width: 750, border: 0, boxShadow: 0
+           }}>
             <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
+              <Typography gutterBottom variant="h4" component="div">
                 {formattedFabricName}
               </Typography>
             </CardContent>

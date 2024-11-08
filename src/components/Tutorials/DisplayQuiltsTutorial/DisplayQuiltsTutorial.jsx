@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -51,7 +51,7 @@ export default function DisplayQuiltsTutorial() {
       <Box sx={{ justifyContent: "center", display: "flex", marginTop: 5 }}>
         <ButtonGroup>
           <Button
-            sx={{ border: 1, borderColor: "black" }}
+            sx={{ border: 1, borderColor: "black", borderRadius: 10 }}
             size="large"
             variant="contained"
             onClick={handleTourReset}
@@ -59,7 +59,7 @@ export default function DisplayQuiltsTutorial() {
             Open Tutorial
           </Button>
           <Button
-            sx={{ border: 1, borderColor: "black" }}
+            sx={{ border: 1, borderColor: "black", borderRadius: 10 }}
             variant="contained"
             onClick={() => history.push("/dashboard")}
           >
@@ -67,11 +67,11 @@ export default function DisplayQuiltsTutorial() {
           </Button>
         </ButtonGroup>
       </Box>
-      <Box sx={{ marginLeft: 6, marginTop: 5, display: "flex"  }}>
-        <Box quilt-tour="step-1" sx={{marginRight: 15}}>
+      <Box sx={{ marginLeft: 6, marginTop: 5, display: "flex" }}>
+        <Box quilt-tour="step-1" sx={{ marginRight: 15 }}>
           <UploadQuiltTutorial />
         </Box>
-        <Box >
+        <Box>
           <Typography variant="h4" sx={{ marginBottom: 3 }}>
             Your Finished Quilts!
           </Typography>
@@ -101,10 +101,15 @@ export default function DisplayQuiltsTutorial() {
                       // Need to pass the quilt to state because of how Dialogs initialize
                       startIcon={<DeleteIcon />}
                       color="secondary"
+                      sx={{ borderRadius: 10 }}
                     >
                       Delete
                     </Button>
-                    <Button variant="contained" startIcon={<MoreHorizIcon />}>
+                    <Button
+                      variant="contained"
+                      sx={{ borderRadius: 10 }}
+                      startIcon={<MoreHorizIcon />}
+                    >
                       View
                     </Button>
                   </CardActions>
@@ -128,10 +133,15 @@ export default function DisplayQuiltsTutorial() {
                       // Need to pass the quilt to state because of how Dialogs initialize
                       startIcon={<DeleteIcon />}
                       color="secondary"
+                      sx={{ borderRadius: 10 }}
                     >
                       Delete
                     </Button>
-                    <Button variant="contained" startIcon={<MoreHorizIcon />}>
+                    <Button
+                      variant="contained"
+                      sx={{ borderRadius: 10 }}
+                      startIcon={<MoreHorizIcon />}
+                    >
                       View
                     </Button>
                   </CardActions>

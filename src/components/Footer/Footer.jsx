@@ -22,7 +22,7 @@ function Footer() {
           m: 8,
           border: 0,
           boxShadow: 0,
-          borderRadius: 0,
+          borderRadius: 10,
           backgroundColor: "#bf7296",
           textTransform: 'unset'
         }}

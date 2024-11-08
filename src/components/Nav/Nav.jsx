@@ -19,7 +19,7 @@ function Nav() {
   return (
     <Box>
       {showNav ? (
-        <Box sx={{ flexGrow: 1, m: 2}}>
+        <Box sx={{ flexGrow: 1, m: 2 }}>
           <AppBar position="relative" sx={{ height: 80, borderRadius: 3 }}>
             <Toolbar sx={{ height: 80 }}>
               <Link
@@ -28,7 +28,11 @@ function Nav() {
                 sx={{ textDecoration: "none" }}
                 to="/landing"
               >
-                <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+                <Typography
+                  variant="h4"
+                  component="div"
+                  sx={{ flexGrow: 1, fontFamily: "Shrikhand" }}
+                >
                   Pass the Good Scissors!
                 </Typography>
               </Link>
@@ -70,23 +74,14 @@ function Nav() {
                     sx={{ justifyContent: "center", alignItems: "center" }}
                     gap={3}
                   >
-                    <Link
+                    {/* <Link
                       component={RouterLink}
                       sx={{ textDecoration: "none" }}
                       color="#fafafa"
                       to="/dashboard"
                     >
                       Dashboard
-                    </Link>
-
-                    <Link
-                      component={RouterLink}
-                      sx={{ textDecoration: "none" }}
-                      color="#fafafa"
-                      to="/quilts"
-                    >
-                      Finished Quilts
-                    </Link>
+                    </Link> */}
 
                     <Link
                       component={RouterLink}
@@ -104,6 +99,15 @@ function Nav() {
                       to="/planning"
                     >
                       Planning Tool
+                    </Link>
+
+                    <Link
+                      component={RouterLink}
+                      sx={{ textDecoration: "none" }}
+                      color="#fafafa"
+                      to="/quilts"
+                    >
+                      Finished Quilts
                     </Link>
 
                     <Link

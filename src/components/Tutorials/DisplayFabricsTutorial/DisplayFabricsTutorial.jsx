@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -51,7 +51,7 @@ export default function DisplayFabricsTutorial() {
       <Box sx={{ justifyContent: "center", display: "flex", marginTop: 5 }}>
         <ButtonGroup>
           <Button
-            sx={{ border: 1, borderColor: "black" }}
+            sx={{ border: 1, borderColor: "black", borderRadius: 10 }}
             size="large"
             variant="contained"
             onClick={handleTourReset}
@@ -59,7 +59,7 @@ export default function DisplayFabricsTutorial() {
             Open Tutorial
           </Button>
           <Button
-            sx={{ border: 1, borderColor: "black" }}
+            sx={{ border: 1, borderColor: "black", borderRadius: 10 }}
             variant="contained"
             onClick={() => history.push("/dashboard")}
           >
@@ -67,8 +67,8 @@ export default function DisplayFabricsTutorial() {
           </Button>
         </ButtonGroup>
       </Box>
-      <Box sx={{ marginLeft: 6, marginTop: 5, display: "flex"  }}>
-        <Box fabric-tour="step-1" sx={{marginRight: 20}}>
+      <Box sx={{ marginLeft: 6, marginTop: 5, display: "flex" }}>
+        <Box fabric-tour="step-1" sx={{ marginRight: 20 }}>
           <UploadFabricTutorial />
         </Box>
         <Box>
@@ -85,10 +85,7 @@ export default function DisplayFabricsTutorial() {
             >
               <Grid xs={12} sm={6} md={3} key="1">
                 <Card sx={{ width: 385, borderRadius: 3 }} fabric-tour="step-2">
-                  <CardMedia
-                    sx={{ height: 385 }}
-                    image="/assets/Fabric1.png"
-                  />
+                  <CardMedia sx={{ height: 385 }} image="/assets/Fabric1.png" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       Backyard Flamingo Hiding Cat
@@ -100,10 +97,15 @@ export default function DisplayFabricsTutorial() {
                       // Need to pass the fabric to state because of how Dialogs initialize
                       startIcon={<DeleteIcon />}
                       color="secondary"
+                      sx={{ borderRadius: 10 }}
                     >
                       Delete
                     </Button>
-                    <Button variant="contained" startIcon={<MoreHorizIcon />}>
+                    <Button
+                      variant="contained"
+                      sx={{ borderRadius: 10 }}
+                      startIcon={<MoreHorizIcon />}
+                    >
                       View
                     </Button>
                   </CardActions>
@@ -111,10 +113,7 @@ export default function DisplayFabricsTutorial() {
               </Grid>
               <Grid xs={12} sm={6} md={3} key="2">
                 <Card sx={{ width: 385, borderRadius: 3 }}>
-                  <CardMedia
-                    sx={{ height: 385 }}
-                    image="/assets/Fabric2.png"
-                  />
+                  <CardMedia sx={{ height: 385 }} image="/assets/Fabric2.png" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       Lets Play Blue Tossed Cat Dolls
@@ -126,10 +125,15 @@ export default function DisplayFabricsTutorial() {
                       // Need to pass the fabric to state because of how Dialogs initialize
                       startIcon={<DeleteIcon />}
                       color="secondary"
+                      sx={{ borderRadius: 10 }}
                     >
                       Delete
                     </Button>
-                    <Button variant="contained" startIcon={<MoreHorizIcon />}>
+                    <Button
+                      variant="contained"
+                      sx={{ borderRadius: 10 }}
+                      startIcon={<MoreHorizIcon />}
+                    >
                       View
                     </Button>
                   </CardActions>
@@ -137,13 +141,10 @@ export default function DisplayFabricsTutorial() {
               </Grid>
               <Grid xs={12} sm={6} md={3} key="3">
                 <Card sx={{ width: 385, borderRadius: 3 }}>
-                  <CardMedia
-                    sx={{ height: 385 }}
-                    image="/assets/Fabric5.png"
-                  />
+                  <CardMedia sx={{ height: 385 }} image="/assets/Fabric5.png" />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                    Eerie Pumpkin and Catnip
+                      Eerie Pumpkin and Catnip
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -152,10 +153,15 @@ export default function DisplayFabricsTutorial() {
                       // Need to pass the fabric to state because of how Dialogs initialize
                       startIcon={<DeleteIcon />}
                       color="secondary"
+                      sx={{ borderRadius: 10 }}
                     >
                       Delete
                     </Button>
-                    <Button variant="contained" startIcon={<MoreHorizIcon />}>
+                    <Button
+                      variant="contained"
+                      sx={{ borderRadius: 10 }}
+                      startIcon={<MoreHorizIcon />}
+                    >
                       View
                     </Button>
                   </CardActions>

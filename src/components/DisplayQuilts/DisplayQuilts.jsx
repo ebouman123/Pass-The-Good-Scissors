@@ -117,9 +117,10 @@ export default function DisplayQuilts() {
                   <Grid xs={12} sm={6} md={3} key={quilt.quiltName}>
                     <Card sx={{ width: 385, borderRadius: 3 }}>
                       <CardMedia
-                        sx={{ height: 385 }}
+                        sx={{ height: 385, cursor: 'pointer' }}
                         image={quilt.url}
                         title={fileName}
+                        onClick={() => handleEdit(quilt.quiltName)}
                       />
                       <CardContent>
                         <Typography noWrap={true} gutterBottom variant="h5" component="div">
@@ -133,6 +134,7 @@ export default function DisplayQuilts() {
                           onClick={() => handleClickOpen(quilt)}
                           startIcon={<DeleteIcon />}
                           color="secondary"
+                          sx={{borderRadius: 10}}
                         >
                           Delete
                         </Button>
@@ -167,6 +169,7 @@ export default function DisplayQuilts() {
                           variant="contained"
                           onClick={() => handleEdit(quilt.quiltName)}
                           startIcon={<MoreHorizIcon />}
+                          sx={{borderRadius: 10}}
                         >
                           View
                         </Button>

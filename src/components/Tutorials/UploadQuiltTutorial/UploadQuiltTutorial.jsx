@@ -28,7 +28,7 @@ export default function UploadQuiltTutorial() {
         <ListItem sx={{ paddingLeft: 0 }}>
           <Button
             component="label"
-            sx={{ marginRight: 3 }}
+            sx={{ marginRight: 3, borderRadius: 10 }}
             variant="contained"
             tabIndex={-1}
             startIcon={<CloudUploadIcon />}
@@ -39,7 +39,6 @@ export default function UploadQuiltTutorial() {
         </ListItem>
         <ListItemText>2. Enter a name for your quilt</ListItemText>
         <ListItem sx={{ paddingLeft: 0 }}>
-          <label htmlFor="imageNameInput">
             <TextField
               type="text"
               label="Quilt Name"
@@ -48,11 +47,12 @@ export default function UploadQuiltTutorial() {
               variant="outlined"
               size="small"
             />
-          </label>
         </ListItem>
         <ListItemText>3. Upload your awesome quilt!</ListItemText>
         <ListItem sx={{ paddingLeft: 0 }}>
-          <Button variant="contained">Upload</Button>
+          <Button variant="contained" sx={{ borderRadius: 10 }}>
+            Upload
+          </Button>
         </ListItem>
       </List>
     </Box>

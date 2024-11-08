@@ -97,27 +97,36 @@ export default function EditQuilt() {
       </Typography>
       <Divider sx={{ marginTop: 3, marginBottom: 3 }} />
       <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
-        <Box>
-          <div>
-            <h3>Comment</h3>
+        <Box sx={{ width: "50vh", wordWrap: "break-word" }}>
+          <Box sx={{ border: 1, p: 4 }}>
+            <Typography variant="h4" sx={{ paddingBottom: 3 }}>
+              Comment
+            </Typography>
             {comment ? (
-              <p>{comment}</p>
+              <Typography variant="body">{comment}</Typography>
             ) : (
-              <p>You haven't added a comment yet.</p>
+              <Typography variant="body">
+                You haven't added a comment yet.
+              </Typography>
             )}
-          </div>
-          <form>
-            <input
+          </Box>
+          <Box
+            component="form"
+            sx={{ display: "flex", flexDirection: "column", paddingTop: 8 }}
+          >
+            <TextField
               type="text"
-              placeholder="Add a Comment"
+              label="Add a Comment"
+              multiline
               value={commentInput}
               onChange={handleComment}
+              sx={{ marginBottom: 2 }}
             />
-            <button type="submit" onClick={handleSave}>
+            <Button type="submit" variant="contained" sx={{ marginBottom: 1 }} onClick={handleSave}>
               Save
-            </button>
-          </form>
-          <button onClick={() => history.push("/dashboard")}>Back</button>
+            </Button>
+            <Button variant="outlined" onClick={() => history.push("/dashboard")}>Back</Button>
+          </Box>
         </Box>
         <Box>
           <Card sx={{ width: 750 }}>

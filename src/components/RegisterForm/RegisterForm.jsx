@@ -113,7 +113,7 @@ function RegisterForm() {
                 />
               </Box>
               <Box sx={{ marginBottom: 2 }}>
-                <Button variant="contained" type="submit" sx={{width: 350}}>
+                <Button variant="contained" type="submit" sx={{width: 350, borderRadius: 10}}>
                   Register
                 </Button>
               </Box>

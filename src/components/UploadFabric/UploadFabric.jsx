@@ -9,6 +9,7 @@ import { styled } from "@mui/material/styles";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import { Typography } from "@mui/material";
 
 export default function UploadFabric() {
   const dispatch = useDispatch();
@@ -112,14 +113,28 @@ export default function UploadFabric() {
     width: 1,
   });
 
+  const handleFill = () => {
+    setNameInput("Black Cats");
+  };
+
   return (
     <Box component="form" noValidate autoComplete="off">
       <List sx={{ p: 0 }}>
-        <ListItemText>1. Choose your fabric</ListItemText>
-        <ListItem sx={{ paddingLeft: 0, width: 250, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+        <ListItemText>
+          <Typography variant="h6">1. Choose your fabric</Typography>
+        </ListItemText>
+        <ListItem
+          sx={{
+            paddingLeft: 0,
+            width: 250,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+          }}
+        >
           <Button
             component="label"
-            sx={{ marginRight: 3 }}
+            sx={{ marginRight: 3, borderRadius: 10 }}
             role={undefined}
             variant="contained"
             tabIndex={-1}
@@ -130,24 +145,32 @@ export default function UploadFabric() {
           </Button>
           {file && <p>File Chosen: {file.name}</p>}
         </ListItem>
-        <ListItemText>2. Enter a name for your fabric</ListItemText>
+        <ListItemText>
+          <Typography variant="h6" onClick={handleFill}>
+            2. Enter a name for your fabric
+          </Typography>
+        </ListItemText>
         <ListItem sx={{ paddingLeft: 0 }}>
-          <label htmlFor="imageNameInput">
-            <TextField
-              type="text"
-              label="Fabric Name"
-              value={nameInput}
-              onChange={handleFileName}
-              id="imageNameInput"
-              placeholder="Enter fabric name"
-              variant="outlined"
-              size="small"
-            />
-          </label>
+          <TextField
+            type="text"
+            label="Fabric Name"
+            value={nameInput}
+            onChange={handleFileName}
+            id="imageNameInput"
+            placeholder="Enter fabric name"
+            variant="outlined"
+            size="small"
+          />
         </ListItem>
-        <ListItemText>3. Upload your fabric!</ListItemText>
+        <ListItemText>
+          <Typography variant="h6">3. Upload your fabric!</Typography>
+        </ListItemText>
         <ListItem sx={{ paddingLeft: 0 }}>
-          <Button variant="contained" onClick={handleUpload}>
+          <Button
+            variant="contained"
+            onClick={handleUpload}
+            sx={{ borderRadius: 10 }}
+          >
             Upload
           </Button>
         </ListItem>
