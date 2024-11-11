@@ -140,6 +140,8 @@ export default function DisplayQuilts() {
                         </Button>
                         <Dialog
                           open={open}
+                          maxWidth='sm'
+                          fullWidth={true}
                           onClose={handleClose}
                           aria-labelledby="alert-dialog-title"
                           aria-describedby="alert-dialog-description"

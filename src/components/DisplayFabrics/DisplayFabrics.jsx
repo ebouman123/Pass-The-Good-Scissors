@@ -140,10 +140,11 @@ export default function DisplayFabrics() {
                         </Button>
                         <Dialog
                           open={open}
+                          maxWidth='sm'
+                          fullWidth={true}
                           onClose={handleClose}
                           aria-labelledby="alert-dialog-title"
                           aria-describedby="alert-dialog-description"
-                          maxWidth='lg'
                         >
                           <DialogTitle id="alert-dialog-title">
                             {"Permanently Delete This Fabric?"}
