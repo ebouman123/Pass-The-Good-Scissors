@@ -47,7 +47,7 @@ export default function UploadQuilt() {
     try {
       const formattedQuiltString = fileName.replaceAll("/", "$");
       const response = await axios.get(
-        `http://localhost:5001/api/quilt/check-quilt-exists?quiltName=${formattedQuiltString}`
+        `/api/quilt/check-quilt-exists?quiltName=${formattedQuiltString}`
       );
       return response.data.exists; // Return existence status
     } catch (error) {
@@ -74,7 +74,7 @@ export default function UploadQuilt() {
 
     // Request a presigned URL for uploading the file
     const response = await axios.get(
-      `http://localhost:5001/api/url/generate-presigned-url?fileName=${fileName}&fileType=${fileType}`
+      `/api/url/generate-presigned-url?fileName=${fileName}&fileType=${fileType}`
     );
     const { url } = response.data; // Extract the presigned URL
 

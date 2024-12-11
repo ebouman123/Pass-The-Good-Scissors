@@ -75,7 +75,7 @@ export default function DisplayQuilts() {
     try {
       // Send a request to delete the quilt from the server
       await axios.delete(
-        `http://localhost:5001/api/url/delete-quilt?quiltName=${quilt.quiltName}`
+        `/api/url/delete-quilt?quiltName=${quilt.quiltName}`
       );
       // Update state to remove the deleted quilt URL
       setQuiltUrls((prevUrls) =>

@@ -40,7 +40,7 @@ export default function PlanningTool() {
       if (fabricNames) {
         try {
           const response = await axios.get(
-            `http://localhost:5001/api/url/generate-multiple-presigned-urls?fabricNames=${fabricNames}`
+            `/api/url/generate-multiple-presigned-urls?fabricNames=${fabricNames}`
           );
           setFabricUrls(response.data); // Update state with fetched URLs
         } catch (error) {

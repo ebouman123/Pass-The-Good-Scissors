@@ -75,7 +75,7 @@ export default function DisplayFabrics() {
     try {
       // Send a request to delete the fabric from the server
       await axios.delete(
-        `http://localhost:5001/api/url/delete-fabric?fabricName=${fabric.fabricName}`
+        `/api/url/delete-fabric?fabricName=${fabric.fabricName}`
       );
       // Update state to remove the deleted fabric URL
       setFabricUrls((prevUrls) =>
