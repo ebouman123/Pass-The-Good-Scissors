@@ -47,7 +47,7 @@ export default function UploadFabric() {
     try {
       const formattedFabricString = fileName.replaceAll("/", "$");
       const response = await axios.get(
-        `http://localhost:5001/api/fabric/check-fabric-exists?fabricName=${formattedFabricString}`
+        `/api/fabric/check-fabric-exists?fabricName=${formattedFabricString}`
       );
       return response.data.exists; // Return existence status
     } catch (error) {
@@ -74,7 +74,7 @@ export default function UploadFabric() {
 
     // Request a presigned URL for uploading the file
     const response = await axios.get(
-      `http://localhost:5001/api/url/generate-presigned-url?fileName=${fileName}&fileType=${fileType}`
+      `/api/url/generate-presigned-url?fileName=${fileName}&fileType=${fileType}`
     );
     const { url } = response.data; // Extract the presigned URL
 
