@@ -102,16 +102,6 @@ export default function EditFabric() {
     alert("Saved!");
   };
 
-  const handleFillComment = () => {
-    setCommentInput("$11.98 per yard");
-    setComment("$11.98 per yard")
-  };
-
-  const handleFillLink = () => {
-    setLinkInput('https://www.fatquartershop.com/laguna-sunrise-geranium-harbor-yardage')
-    setLink('https://www.fatquartershop.com/laguna-sunrise-geranium-harbor-yardage')
-
-  };
 
   return (
     <Box sx={{ marginLeft: 3 }}>
@@ -159,7 +149,6 @@ export default function EditFabric() {
             <TextField
               type="text"
               label="Add a Comment"
-              onClick={handleFillComment}
               multiline
               value={commentInput}
               onChange={handleComment}
@@ -168,7 +157,6 @@ export default function EditFabric() {
             <TextField
               type="text"
               label="Add a Link"
-              onClick={handleFillLink}
               multiline
               value={linkInput}
               onChange={handleLink}

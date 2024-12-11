@@ -36,10 +36,6 @@ function LoginForm() {
     }
   }; // end login
 
-  const handleFill = () => {
-    setUsername('ebouman')
-    setPassword('gordon')
-  }
 
   return (
     <Box
@@ -86,7 +82,7 @@ function LoginForm() {
               sx={{ display: "flex", flexDirection: "column" }}
               onSubmit={login}
             >
-              <Typography variant="h4" onClick={handleFill}>Welcome Back!</Typography>
+              <Typography variant="h4">Welcome Back!</Typography>
               {errors.loginMessage && (
                 <h3 className="alert" role="alert">
                   {errors.loginMessage}

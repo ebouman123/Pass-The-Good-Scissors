@@ -113,9 +113,6 @@ export default function UploadFabric() {
     width: 1,
   });
 
-  const handleFill = () => {
-    setNameInput("Black Cats");
-  };
 
   return (
     <Box component="form" noValidate autoComplete="off">
@@ -146,7 +143,7 @@ export default function UploadFabric() {
           {file && <p>File Chosen: {file.name}</p>}
         </ListItem>
         <ListItemText>
-          <Typography variant="h6" onClick={handleFill}>
+          <Typography variant="h6">
             2. Enter a name for your fabric
           </Typography>
         </ListItemText>
