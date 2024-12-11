@@ -200,11 +200,13 @@ export default function PlanningTool() {
               container
               spacing={3}
               direction="row"
-              justify="flex-start"
+              justifyContent="flex-start"
               alignItems="flex-start"
               sx={{
                 overflow: "auto",
                 maxHeight: 600,
+                minWidth: 300,
+                minHeight: 600,
                 paddingLeft: 3,
                 paddingTop: 3,
               }}
@@ -251,7 +253,16 @@ export default function PlanningTool() {
               })}
             </Grid>
           ) : (
-            <Box>
+            <Box
+              sx={{
+                overflow: "auto",
+                maxHeight: 600,
+                minWidth: 300,
+                minHeight: 600,
+                paddingLeft: 3,
+                paddingTop: 3,
+              }}
+            >
               <Typography>Add some fabrics, idiot</Typography>
             </Box>
           )}
