@@ -58,7 +58,7 @@ function Nav() {
                       component={RouterLink}
                       sx={{ textDecoration: "none" }}
                       color="#fafafa"
-                      to="/about"
+                      to="/"
                     >
                       About
                     </Link>
@@ -114,7 +114,7 @@ function Nav() {
                       component={RouterLink}
                       sx={{ textDecoration: "none" }}
                       color="#fafafa"
-                      to="/about"
+                      to="/"
                     >
                       About
                     </Link>

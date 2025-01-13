@@ -15,7 +15,6 @@ function Footer() {
   return (
     <footer>
       <Button
-        onClick={() => history.push("/about")}
         variant="contained"
         sx={{
           height: 43,
